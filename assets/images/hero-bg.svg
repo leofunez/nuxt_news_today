@@ -1,0 +1,9 @@
+<svg width="1440" height="647" viewBox="0 0 1440 647" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="hero-bg" d="M0 647L1440 452.391V0H0V647Z" fill="url(#paint0_linear)"/>
+<defs>
+<linearGradient id="paint0_linear" x1="0" y1="0" x2="0" y2="647" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8E87E1"/>
+<stop offset="1" stop-color="#564FC0"/>
+</linearGradient>
+</defs>
+</svg>

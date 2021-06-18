@@ -1,0 +1,125 @@
+@import "_colors.scss";
+
+.dark-mode__trigger {
+    cursor: pointer;
+    border: 0;
+    height: 35px;
+    width: 35px;
+    background: url("../assets/images/dark_mode_off.svg") no-repeat center / 22px;
+
+    &--is-on {
+        background-image: url("../assets/images/dark_mode_on.svg");
+    }
+}
+
+&.dark-mode {
+    background-color: $darkest;
+    color: $white;
+
+    .bg-layer {
+        background-color: $darker;
+    }
+
+    .logo {
+        background: url("../assets/images/logo_dark.svg") no-repeat center / 120px auto;
+
+        svg {
+            display: none;
+        }
+    }
+
+    .dark-mode__trigger {
+        background-image: url("../assets/images/dark_mode_on.svg");
+    }
+
+    .menu-button {
+        &__line {
+            background-color: $white;
+        }
+    }
+
+    // Search Form
+        .search {
+            &-field {
+                background-color: $darker;
+                color: $white;
+            }
+
+            &-submit {
+                filter: invert(1);
+            }
+        }
+    // .Search Form
+
+    // Has no dark layer
+        &:not(.has-dark-layer) {
+            .menu-header-container {
+                .menu-item {
+                    a {
+                        color: $white;
+
+                        &:hover {
+                            color: $fucsia;
+                        }
+                    }
+                }
+            }
+            
+            .page-detail {
+                &__title {
+                    color: $white;
+                }
+
+                &__body {
+                    h2, h3, h4 {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    // .Has no dark layer
+
+    // Post Card
+        .post-card {
+            &__category {
+                background-color: $darkest;
+            }
+
+            &__title {
+                a {
+                    color: $white;
+                }
+            }
+
+            // Featured
+                &--featured {
+                    .post-card {
+                        &__category {
+                            background-color: $darkest;
+                        }
+
+                        &__title {
+                            a {
+                                color: $white;
+                            }
+                        }
+                    }
+                }
+            // .Featured
+
+            // Card Number
+                &-number {
+                    &__index {
+                        color: $white;
+                    }
+
+                    &__title {
+                        a {
+                            color: $white;
+                        }
+                    }
+                }
+            // .Card Number
+        }
+    // .Post Card
+}
