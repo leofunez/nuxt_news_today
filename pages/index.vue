@@ -1,4 +1,5 @@
 <template>
+<!-- **** HOME **** -->
 	<section class="page">
 		<!-- Featured -->
 			<section class="featured-block">
@@ -80,6 +81,7 @@
 			</section>
 		<!-- .More Top Stories -->
 	</section>
+<!-- **** .HOME **** -->
 </template>
 
 <script>

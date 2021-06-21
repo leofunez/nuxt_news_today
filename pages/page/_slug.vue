@@ -1,4 +1,5 @@
 <template>
+<!-- **** PAGE DETAIL **** -->
     <section class="page-detail">
 		<div class="wrapper">
 			<h1 class="page-detail__title" v-text="title"></h1>
@@ -7,6 +8,7 @@
             <div class="page-detail__body" v-html="body"></div>
         </div>
 	</section>
+<!-- **** .PAGE DETAIL **** -->
 </template>
 
 <script>

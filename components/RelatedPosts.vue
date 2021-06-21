@@ -1,7 +1,10 @@
 <template>
+<!-- **** RELATED POSTS **** -->
     <section class="related-posts">
         <h3 class="related-posts__title">Related posts</h3>
-        <div class="loading-posts" v-if="isLoading" v-text="'Loading posts...'"></div>
+        
+        <LoaderString v-if="isLoading" text="Loading posts..." />
+        
         <div class="list-block list-block--medium" v-if="!isLoading">
             <PostCard
                 v-for="(post, index) in posts"
@@ -15,15 +18,18 @@
             />
         </div>
     </section>
+<!-- **** .RELATED POSTS **** -->
 </template>
 
 <script>
 import APINews from "@/api/api";
 import PostCard from "@/components/PostCard";
+import LoaderString from "@/components/LoaderString";
 
 export default {
     components: {
-        PostCard
+        PostCard,
+        LoaderString
     },
 
     props: {

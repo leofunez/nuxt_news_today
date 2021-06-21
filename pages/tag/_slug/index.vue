@@ -1,7 +1,9 @@
 <template>
+<!-- **** TAG **** -->
      <section class="category-page category-page--is-loading">
         <h2 class="category-page__name" v-text="name"></h2>
-        <div class="loading-posts" v-if="name && isLoading" v-text="'Loading posts...'"></div>
+        
+        <LoaderString v-if="name && isLoading" text="Loading posts..." />
         
         <div class="list-block list-block--section list-block--medium" v-if="!isLoading">
             <PostCard
@@ -18,16 +20,19 @@
 
         <Button v-if="!isLoading && posts.length > 8" text="Load More" />
     </section>
+<!-- **** .TAG **** -->
 </template>
 
 <script>
 import APINews from "@/api/api";
 import PostCard from "@/components/PostCard";
+import LoaderString from "@/components/LoaderString";
 import Button from "@/components/Button";
 
 export default {
     components: {
         PostCard,
+        LoaderString,
         Button
     },
 

@@ -1,4 +1,5 @@
 <template>
+<!-- **** POST DETAIL **** -->
     <section class="post-detail">
         <div class="post-detail__wrapper">
             <div class="post-detail__content">
@@ -33,6 +34,7 @@
 
         <RelatedPosts :category="category.id" v-if="category.id" />
     </section>
+<!-- **** POST DETAIL **** -->
 </template>
 
 <script>
