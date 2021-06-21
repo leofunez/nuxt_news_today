@@ -31,10 +31,6 @@ export default {
 		return {
 			headerIsDark: this.$route.name === "index" ? false : true
 		}
-	},
-
-	created() {
-		console.log(this.$route.name)
 	}
 }
 </script>

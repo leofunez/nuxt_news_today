@@ -33,7 +33,7 @@ export default {
 
     data() {
         return {
-            slug: this.$route.params.slug,
+            category: this.$route.params.category,
             id: "",
             name: "",
             posts: [],
@@ -42,35 +42,44 @@ export default {
     },
 
     created() {
-        this.getCategoryInfo(this.slug);
+        this.getCategoryInfo(this.category);
     },
 
     methods: {
-        async getCategoryInfo(slug) {
-            const response = await APINews.getCategoryInfo(slug);
-            this.id = response[0].id;
-            this.name = response[0].name;
+        async getCategoryInfo(category) {
+            try {
+                const response = await APINews.getCategoryInfo(category);
+                this.id = response[0].id;
+                this.name = response[0].name;
 
-            this.getCategoryPosts(response[0].id);
+                this.getCategoryPosts(response[0].id);
+            } catch(err) {
+				console.log(err)
+			}
         },
 
         async getCategoryPosts(id) {
-            const response = await APINews.getCategoryPosts(id);
-            
-            response.forEach(post => {
-                const newPost = {
-                    id: post.id,
-                    link: `/${this.slug}/${post.slug}`,
-                    title: post.title.rendered,
-                    category: this.name,
-                    category_slug: this.slug,
-                    thumbnail: post._embedded["wp:featuredmedia"][0].source_url
-                };
+            try {
+                const response = await APINews.getCategoryPosts(id, 8);
                 
-                this.posts = [...this.posts, newPost];
-            });
+                response.forEach(post => {
+                    const imageObj = post._embedded["wp:featuredmedia"][0];
+                    const newPost = {
+                        id: post.id,
+                        link: `/${this.category}/${post.slug}`,
+                        title: post.title.rendered,
+                        category: this.name,
+                        category_slug: this.category,
+                        thumbnail: imageObj.media_details.sizes["medium-thumbnail"].source_url || imageObj.source_url
+                    };
+                    
+                    this.posts = [...this.posts, newPost];
+                });
 
-            this.isLoading = false;
+                this.isLoading = false;
+            } catch(err) {
+				console.log(err)
+			}
         }
     }
 }

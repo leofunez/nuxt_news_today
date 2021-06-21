@@ -35,7 +35,7 @@ export default {
 		async getHeaderMenu() {
             const response = await APINews.getHeaderMenu();
             response.forEach(item => {
-                this.menu = [...this.menu, {title: item.title, url: item.url.replace("http://localhost:8888/news/", "/")}]
+                this.menu = [...this.menu, {title: item.title, url: item.url.replace("http://localhost:8888/news/category/", "/")}]
             });
 		}
 	}

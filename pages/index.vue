@@ -110,40 +110,52 @@ export default {
 
 	methods: {
 		async getHomePosts() {
-			const response = await APINews.getHomePosts();
+			try {
+				const response = await APINews.getHomePosts();
 
-			response.forEach((post, index) => {
-                const newPost = {
-                    id: post.id,
-                    link: `/${""}/${post.slug}`,
-                    title: post.title.rendered,
-                    category: "",
-                    category_slug: "",
-                    thumbnail: post._embedded["wp:featuredmedia"][0].source_url
-                };
-                
-				(index < 3) && (this.featuredPosts = [...this.featuredPosts, newPost]);
-				(index > 2 && index < 9) && (this.listPosts = [...this.listPosts, newPost]);
-				(index > 8 && index < 21) && (this.listPosts2 = [...this.listPosts2, newPost]);
-				(index > 20 && index < 33) && (this.listPosts3 = [...this.listPosts3, newPost]);
-            });
+				response.forEach(async (post, index) => {
+					const category = await APINews.getCategoryById(post.categories[0]);
+					const imageObj = post._embedded["wp:featuredmedia"][0];
+					const newPost = {
+						id: post.id,
+						link: `/${category.slug}/${post.slug}`,
+						title: post.title.rendered,
+						category: category.name,
+						category_slug: category.slug,
+						thumbnail: (index < 10) ? imageObj.media_details.sizes["featured-thumbnail"].source_url : imageObj.media_details.sizes["medium-thumbnail"].source_url || imageObj.source_url
+					};
+					
+					(index < 3) && (this.featuredPosts = [...this.featuredPosts, newPost]);
+					(index > 2 && index < 9) && (this.listPosts = [...this.listPosts, newPost]);
+					(index > 8 && index < 21) && (this.listPosts2 = [...this.listPosts2, newPost]);
+					(index > 20 && index < 33) && (this.listPosts3 = [...this.listPosts3, newPost]);
+				});
+			} catch(err) {
+				console.log(err)
+			}
 		},
 
 		async getTendingPosts() {
-			const response = await APINews.getTendingPosts();
+			try {
+				const response = await APINews.getTendingPosts();
 
-			response.forEach((post, index) => {
-                const newPost = {
-                    id: post.id,
-                    link: `/${""}/${post.slug}`,
-                    title: post.title.rendered,
-                    category: "",
-                    category_slug: "",
-                    thumbnail: post._embedded["wp:featuredmedia"][0].source_url
-                };
-                
-				this.trendingPosts = [...this.trendingPosts, newPost];
-            });
+				response.forEach(async post => {
+					const category = await APINews.getCategoryById(post.categories[0]);
+					const imageObj = post._embedded["wp:featuredmedia"][0];
+					const newPost = {
+						id: post.id,
+						link: `/${category.slug}/${post.slug}`,
+						title: post.title.rendered,
+						category: category.name,
+						category_slug: category.slug,
+						thumbnail: imageObj.media_details.sizes["small-thumbnail"].source_url || imageObj.source_url
+					};
+					
+					this.trendingPosts = [...this.trendingPosts, newPost];
+				});
+			} catch(err) {
+				console.log(err)
+			}
 		}
 	}
 }

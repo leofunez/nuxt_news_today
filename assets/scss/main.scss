@@ -292,6 +292,8 @@ body {
     // Post Detail
         .post-detail,
         .page-detail {
+            margin-bottom: 100px;
+            
             &__wrapper {
                 max-width: 1280px;
                 margin: 0 auto;
@@ -305,19 +307,6 @@ body {
                 margin: 40px auto 60px;
             }
 
-            &__category {
-                @include main-font;
-                font-size: 16px;
-                text-transform: uppercase;
-            }
-
-            &__date {
-                opacity: 0.7;
-                font-weight: 600;
-                color: $white;
-                margin-bottom: 20px;
-            }
-
             &__title {
                 @include main-font;
                 font-size: 65px;
@@ -327,36 +316,6 @@ body {
                 text-transform: uppercase;
                 text-align: center;
                 margin: 20px 0;
-            }
-
-            &__image {
-                margin: 0 0 40px;
-                position: relative;
-                @include flex-center;
-                
-                &-img {
-                    width: 100%;
-                    height: auto;
-                }
-            }
-            
-            &__video-play {
-                background-color: $fucsia;
-                height: 80px;
-                width: 80px;
-                @include flex-center;
-                position: absolute;
-                cursor: pointer;
-                transition: all 0.2s ease-in-out;
-
-                svg {
-                    width: 46px;
-                    height: 46px;
-                }
-
-                &:hover {
-                    background-color: $fucsia_h;
-                }
             }
 
             &__body {
@@ -383,29 +342,6 @@ body {
                         &:hover {
                             text-decoration: none;
                         }
-                    }
-                }
-            }
-
-            &__tags {
-                display: flex;
-            }
-
-            &__tag-item {
-                a {
-                    padding: 5px 10px;
-                    margin: 0 5px 0 0;
-                    text-transform: capitalize;
-                    text-transform: uppercase;
-                    @include main-font;
-                    background-color: rgba($fucsia, 0.05);
-                    border-radius: 4px;
-                    display: block;
-                    font-size: 13px;
-                    transition: all .2s ease-in-out;
-
-                    &:hover {
-                        background-color: rgba($fucsia, 0.1);
                     }
                 }
             }
@@ -476,19 +412,6 @@ body {
             }
         }
     // .Video embed
-
-    // Related Posts
-        .related-posts {
-            margin: 100px 0 0;
-            
-            &__title {
-                @include main-font;
-                font-size: 18px;
-                letter-spacing: -0.7px;
-                margin: 0 0 20px;
-            }
-        }
-    // .Related Posts
 
     // Has no dark layer
         &:not(.has-dark-layer) {
