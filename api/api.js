@@ -57,4 +57,10 @@ export default ({
             return await fetch(`${baseURL}posts?slug=${slug}&_embed`).then(async res => await res.json());
         },
     // .Post
+
+    // Page
+        async getPage(slug) {
+            return await fetch(`${baseURL}pages?slug=${slug}&_embed`).then(async res => await res.json());
+        }
+    // .Page
 });
