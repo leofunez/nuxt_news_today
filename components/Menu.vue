@@ -1,5 +1,5 @@
 <template>
-    <nav class="menu" :class="{'menu--header': isHeader}">
+    <nav class="menu" :class="{'menu--header': isHeader, 'menu--header--active': isHeader && isOpen}">
         <nuxt-link v-for="(item, index) in items" v-text="item.title" :key="`${index}-${item.url}`" :to="item.url" class="menu__item" :class="{'menu__item--dark' : isDark}"></nuxt-link>
     </nav>
 </template>
@@ -17,6 +17,11 @@ export default {
             default: false
         },
         isHeader: {
+            type: Boolean,
+            required: false,
+            default: false
+        },
+        isOpen: {
             type: Boolean,
             required: false,
             default: false
@@ -78,6 +83,10 @@ export default {
             transition: all 0.2s ease-in-out;
             flex-direction: column;
 
+            &--active {
+                right: 0;
+            }
+
             .menu {
                 &__item {
                     text-align: right;
@@ -96,11 +105,7 @@ export default {
                     }
                 }
             }
-        }
-
-        &--active {
-            right: 0;
-        }
+        }        
     }
 
     @media screen and (max-width: 480px) {

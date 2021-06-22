@@ -2,7 +2,19 @@
     <header class="header" :class="{'header--is-dark' : isDark}">
         <nuxt-link :to="'/'" class="logo" :class="{'logo--is-dark' : isDark}"></nuxt-link>
         
-        <Menu :items="menu" :isDark="isDark" :isHeader="true" />
+        <Menu :items="menu" :isDark="isDark" :isHeader="true" :isOpen="menuState" />
+
+        <button class="dark-mode__trigger"></button>
+
+        <nuxt-link class="button-live" title="Live NOW" to="/">
+            Live <span class="button-live__now">now</span>
+        </nuxt-link>
+
+        <button class="menu-button" :class="{'menu-button--active' :menuState}" @click="openMenu">
+            <span class="menu-button__line"></span>
+            <span class="menu-button__line"></span>
+            <span class="menu-button__line"></span>
+        </button>
     </header>
 </template>
 
@@ -23,7 +35,8 @@ export default {
 
     data() {
         return {
-            menu: []
+            menu: [],
+            menuState: false
         }
     },
 
@@ -37,7 +50,11 @@ export default {
             response.forEach(item => {
                 this.menu = [...this.menu, {title: item.title, url: item.url.replace("http://localhost:8888/news/category/", "/")}]
             });
-		}
+		},
+
+        openMenu() {
+            this.menuState = !this.menuState;
+        }
 	}
 }
 </script>
@@ -72,6 +89,57 @@ export default {
         &.dark-mode {
             background-color: $darkest;
             border-color: $darker;
+        }
+    }
+
+    .menu-button {
+        display: none;
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+        border: 0;
+        background: transparent;
+        position: relative;
+        margin: 10px;
+        padding: 0;
+
+        &__line {
+            height: 2px;
+            width: 25px;
+            background-color: $dark;
+            display: block;
+            position: absolute;
+            left: 8px;
+            transition: all 0.2s ease-in-out;
+
+            &:first-of-type {
+                top: 15px;
+            }
+            &:last-of-type {
+                top: 25px;
+            }
+        }
+
+        &--active {
+            .menu-button {
+                &__line {
+                    &:first-of-type {
+                        top: 20px;
+                        transform: rotate(45deg);
+                    }
+                    &:nth-child(2) {
+                        height: 0;
+                    }
+                    &:last-of-type {
+                        top: 20px;
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            display: block;
         }
     }
 }
