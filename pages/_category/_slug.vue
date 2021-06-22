@@ -111,11 +111,65 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/assets/scss/_colors.scss";
 @import "@/assets/scss/_mixins.scss";
 
 .post-detail {
+    margin-bottom: 100px;
+
+    &__wrapper {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    &__top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 900px;
+        margin: 40px auto 60px;
+    }
+
+    &__title {
+        @include main-font;
+        font-size: 65px;
+        color: $white;
+        line-height: 1.1;
+        letter-spacing: -2.5px;
+        text-transform: uppercase;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    &__body {
+        max-width: 780px;
+        margin: 0 auto;
+
+        img {
+            height: auto;
+        }
+
+        h2 {
+            color: $dark;
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 2;
+
+            a {
+                color: $fucsia;
+                text-decoration: underline;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
     &__category {
         @include main-font;
         font-size: 16px;
@@ -180,5 +234,119 @@ export default {
             background-color: rgba($fucsia, 0.1);
         }
     }
+
+    // Social Sharing
+        .social-sharing {
+            @include flex-center;
+
+            a {
+                cursor: pointer;
+                display: block;
+                height: 40px;
+                width: 40px;
+                margin: 0 5px;
+                background-size: 22px;
+                background-position: center;
+                background-repeat: no-repeat;
+                transition: all .2s ease-in-out;
+
+                &:hover {
+                    filter: invert(100%) saturate(0%);
+                }
+            }
+
+            &__facebook {
+                background-image: url("../../assets/images/social/facebook.svg");
+            }
+            &__twitter {
+                background-image: url("../../assets/images/social/twitter.svg");
+            }
+            &__whatsapp {
+                background-image: url("../../assets/images/social/whatsapp.svg");
+            }
+            &__linkedin {
+                background-image: url("../../assets/images/social/linkedin.svg");
+            }
+        }
+    // .Social Sharing
+    
+    // **** MEDIA **** //
+    @media screen and (max-width: 1000px) {
+        margin-top: 60px;
+
+        &__title {
+            font-size: 45px;
+            letter-spacing: -0.5px;
+            color: $dark;
+            margin-bottom: 40px;
+        }
+
+        &__date {
+            color: $dark;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        &__top {
+            margin: 20px 0;
+        }
+
+        &__category {
+            font-size: 14px;
+        }
+
+        &__video-play {
+            width: 60px;
+            height: 60px;
+
+            svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        &__title {
+            font-size: 35px;
+            margin: 10px 0;
+        }
+
+        &__image {
+            margin-bottom: 20px;
+        }
+
+        &__body {
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        &__title {
+            font-size: 28px;
+        }
+
+        &__video-play {
+            width: 50px;
+            height: 50px;
+
+            svg {
+                width: 26px;
+                height: 26px;
+            }
+        }
+    }
+    // **** .MEDIA **** //
 }
+
+// DARK //
+    .dark-mode {
+        .post-detail {
+            &__title,
+            &__date {
+                color: $white;
+            }
+        }
+    }
+// .DARK //
 </style>

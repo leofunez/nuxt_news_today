@@ -94,8 +94,6 @@ export default {
 @import "@/assets/scss/_mixins.scss";
 
 .category-page {
-    margin-bottom: 100px;
-
     &__name {
         text-align: center;
         font-size: 75px;
@@ -103,6 +101,15 @@ export default {
         margin: 20px 0 40px;
         @include main-font;
         text-transform: capitalize;
+
+        @media screen and (max-width: 768px) {
+            font-size: 55px;
+        }
+
+        @media screen and (max-width: 480px) {
+            font-size: 45px;
+            letter-spacing: -2.5px;
+        }
     }
 }
 </style>

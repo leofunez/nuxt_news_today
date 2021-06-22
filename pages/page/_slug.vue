@@ -44,8 +44,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/assets/scss/_colors.scss";
+@import "@/assets/scss/_mixins.scss";
 
 .page-detail {
     margin: 80px 0;
@@ -56,9 +57,88 @@ export default {
     }
 
     &__title {
+        @include main-font;
         font-size: 65px;
-        margin-bottom: 80px;
         color: $dark;
+        line-height: 1.1;
+        letter-spacing: -2.5px;
+        text-transform: uppercase;
+        text-align: center;
+        margin: 20px 0 40px;
     }
+
+    &__body {
+        max-width: 780px;
+        margin: 0 auto;
+
+        img {
+            height: auto;
+        }
+
+        h2 {
+            color: $dark;
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 2;
+
+            a {
+                color: $fucsia;
+                text-decoration: underline;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    // **** MEDIA **** //
+    @media screen and (max-width: 1000px) {
+        &__title {
+            font-size: 45px;
+            letter-spacing: -0.5px;
+            color: $dark;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        margin-top: 40px;
+
+        &__top {
+            margin: 20px 0;
+        }
+
+        &__title {
+            font-size: 35px;
+            margin: 10px 0 20px;
+        }
+
+        &__body {
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        &__title {
+            font-size: 28px;
+        }
+    }
+    // **** .MEDIA **** //
 }
+
+// DARK //
+    .dark-mode {
+        .page-detail {
+            &__title,
+            &__date {
+                color: $white;
+            }
+        }
+    }
+// .DARK //
 </style>

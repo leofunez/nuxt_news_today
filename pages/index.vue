@@ -162,3 +162,89 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss">
+	// Featured Posts Block
+		.featured-block {
+			display: grid;
+			grid-gap: 2px;
+			grid-template-columns: 1fr 260px 260px;
+			margin-bottom: 60px;
+
+			@media screen and (max-width: 1000px) {
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: [main-post]1fr [list-posts] max-content;
+				grid-gap: 30px;
+				position: relative;
+				padding: 15px 0 0;
+			}
+
+			@media screen and (max-width: 768px) {
+				grid-template-columns: 1fr;
+            	grid-template-rows: 1fr;
+			}
+		}
+	// .Featured Posts Block
+
+	// Most Read
+		.most-read {
+			margin-bottom: 140px;
+
+			&__posts {
+				column-count: 3;
+				column-gap: 60px;
+
+				@media screen and (max-width: 1000px) {
+					column-count: 2;
+				}
+			}
+
+			@media screen and (max-width: 768px) {
+				margin-bottom: 100px;
+
+				&__posts {
+					display: grid;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+				margin-bottom: 80px;
+
+				&__title {
+					font-size: 24px;
+				}
+			}
+		}
+	// .Most Read
+
+	// List Block
+        .list-block {
+			display: grid;
+            grid-gap: 60px 30px;
+            grid-template-columns: repeat(auto-fill, minmax(396px, 1fr));
+            margin-bottom: 140px;
+
+            &--medium,
+            &--small {
+                grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            }
+
+            &--small {
+                grid-gap: 30px;
+            }
+
+            &--section {
+                margin-bottom: 60px;
+            }
+
+			@media screen and (max-width: 768px) {
+				margin-bottom: 100px;
+			}
+
+			@media screen and (max-width: 480px) {
+				grid-gap: 30px;
+				margin-bottom: 80px;
+			}
+        }
+    // .List Block
+</style>

@@ -2,7 +2,7 @@
     <header class="header" :class="{'header--is-dark' : isDark}">
         <nuxt-link :to="'/'" class="logo" :class="{'logo--is-dark' : isDark}"></nuxt-link>
         
-        <Menu :items="menu" :isDark="isDark" />
+        <Menu :items="menu" :isDark="isDark" :isHeader="true" />
     </header>
 </template>
 
@@ -56,5 +56,23 @@ export default {
     font-size: 12px;
     font-weight: 600;
     color: $white;
+
+    @media screen and (max-width: 1000px) {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background-color: $white;
+        padding: 0 0 0 15px;
+        height: 80px;
+        z-index: 2;
+        grid-template-columns: 1fr 35px 94px 60px;
+        border-bottom: 2px solid $light;
+        
+        &.dark-mode {
+            background-color: $darkest;
+            border-color: $darker;
+        }
+    }
 }
 </style>

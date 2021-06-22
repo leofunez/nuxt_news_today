@@ -67,5 +67,23 @@ export default {
         grid-column: 2;
         text-align: center;
     }
+
+    // **** MEDIA **** //
+    @media screen and (max-width: 1000px) {
+        .wrapper {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+
+        .logo {
+            margin: 0 auto;
+        }
+
+        &__author {
+            grid-column: 1;
+            grid-row: initial;
+        }
+    }
+    // **** .MEDIA **** //
 }
 </style>
