@@ -1,6 +1,6 @@
 <template>
 	<main>
-		<Loader />
+		<Loader v-if="GET_IS_LOADING" />
 		<div class="bg-layer" v-if="!headerIsDark"></div>
 
 		<div class="main-wrapper">
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Header from "~/components/Header";
 import Footer from "~/components/Footer";
 import Loader from "~/components/Loader";
@@ -31,7 +32,11 @@ export default {
 		return {
 			headerIsDark: this.$route.name === "index" ? false : true
 		}
-	}
+	},
+
+	computed: {
+        ...mapGetters(["GET_IS_LOADING"]),
+    }
 }
 </script>
 

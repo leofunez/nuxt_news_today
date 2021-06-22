@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import APINews from "@/api/api";
 import RelatedPosts from "@/components/RelatedPosts";
 
@@ -70,6 +71,8 @@ export default {
     },
 
     methods: {
+        ...mapActions(["SET_IS_LOADING"]),
+
         async getPost() {
             try {
                 const response = await APINews.getPost(this.slug);
@@ -90,6 +93,8 @@ export default {
                         slug: `/tag/${response.slug}`
                     }];
                 });
+
+                setTimeout(() => this.SET_IS_LOADING(false), 500);
             } catch(err) {
                 console.log(err)
             }

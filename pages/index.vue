@@ -85,6 +85,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import APINews from "@/api/api";
 import PostCard from "@/components/PostCard";
 import PostCount from "@/components/PostCount";
@@ -108,9 +109,12 @@ export default {
 	created() {
 		this.getHomePosts();
 		this.getTendingPosts();
+		this.SET_IS_LOADING(true);
 	},
 
 	methods: {
+		...mapActions(["SET_IS_LOADING"]),
+
 		async getHomePosts() {
 			try {
 				const response = await APINews.getHomePosts();
@@ -132,6 +136,8 @@ export default {
 					(index > 8 && index < 21) && (this.listPosts2 = [...this.listPosts2, newPost]);
 					(index > 20 && index < 33) && (this.listPosts3 = [...this.listPosts3, newPost]);
 				});
+
+				setTimeout(() => this.SET_IS_LOADING(false), 500);
 			} catch(err) {
 				console.log(err)
 			}

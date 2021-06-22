@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import APINews from "@/api/api";
 import PostCard from "@/components/PostCard";
 import LoaderString from "@/components/LoaderString";
@@ -51,6 +52,8 @@ export default {
     },
 
     methods: {
+        ...mapActions(["SET_IS_LOADING"]),
+        
         async getCategoryInfo(category) {
             try {
                 const response = await APINews.getCategoryInfo(category);
@@ -81,6 +84,7 @@ export default {
                     this.posts = [...this.posts, newPost];
                 });
 
+                setTimeout(() => this.SET_IS_LOADING(false), 500);
                 this.isLoading = false;
             } catch(err) {
 				console.log(err)

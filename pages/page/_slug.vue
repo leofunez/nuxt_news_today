@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import APINews from "@/api/api";
 
 export default {
@@ -29,6 +30,8 @@ export default {
     },
 
     methods: {
+        ...mapActions(["SET_IS_LOADING"]),
+
         async getPage() {
             try {
                 const response = await APINews.getPage(this.slug);
@@ -36,6 +39,8 @@ export default {
                 this.title = title.rendered;
                 this.body = content.rendered;
                 this.isLoading = false;
+
+                setTimeout(() => this.SET_IS_LOADING(false), 500);
             } catch(err) {
                 console.log(err);
             }
