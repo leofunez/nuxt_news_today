@@ -24,6 +24,10 @@ body {
     background: $white;
     position: relative;
 
+    &.is-loading {
+        overflow: hidden;
+    }
+
     .bg-layer {
         position: absolute;
         width: 100%;
@@ -108,17 +112,19 @@ body {
         }
     }
 
-    .main-content {
-        min-height: calc(100vh - 320px);
-        margin-bottom: 120px;
-    }
+    .main {
+        &__content {
+            min-height: calc(100vh - 320px);
+            margin-bottom: 120px;
+        }
 
-    .main-wrapper {
-        max-width: 1280px;
-        margin: 0 auto;
-        z-index: 1;
-        position: relative;
-        padding: 0 15px;
+        &__wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            z-index: 1;
+            position: relative;
+            padding: 0 15px;
+        }
     }
 
     .section-title {

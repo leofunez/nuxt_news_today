@@ -33,9 +33,11 @@
             background-image: url("../assets/images/dark_mode_off_dark.svg");
         }
     // .Dark Mode Trigger
-
-    .main-content {
-        padding-top: 80px;
+    
+    .main {
+        &__content {
+            padding-top: 80px;
+        }
     }
 
     // Gutenberg blocks

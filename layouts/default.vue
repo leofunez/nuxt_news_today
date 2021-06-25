@@ -1,12 +1,12 @@
 <template>
-	<main>
+	<main class="main">
 		<Loader v-if="GET_IS_LOADING" />
 		<div class="bg-layer" v-if="!headerIsDark"></div>
 
-		<div class="main-wrapper">
+		<div class="main__wrapper">
 			<Header :isDark="headerIsDark" />
 			
-			<div class="main-content">
+			<div class="main__content">
 				<Nuxt :key="$route.fullPath" />
 			</div>
 		</div>
