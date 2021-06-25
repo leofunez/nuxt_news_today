@@ -34,6 +34,11 @@ export default {
 		}
 	},
 
+	mounted() {
+		const bodyClassList = document.querySelector("body").classList;
+		this.GET_IS_LOADING && !bodyClassList.contains("is-loading") ? bodyClassList.add("is-loading") : bodyClassList.remove("is-loading");
+	},
+
 	computed: {
         ...mapGetters(["GET_IS_LOADING"]),
     }
