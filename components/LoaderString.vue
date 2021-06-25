@@ -14,8 +14,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.loading-string {
-    text-align: center;
-    font-weight: 600;
-}
+    .loading-string {
+        text-align: center;
+        font-weight: 600;
+    }
 </style>

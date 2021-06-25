@@ -70,6 +70,10 @@ export default {
         text-transform: uppercase;
         text-align: center;
         margin: 20px 0 40px;
+
+        .dark-mode & {
+            color: $white;
+        }
     }
 
     &__body {
@@ -135,15 +139,4 @@ export default {
     }
     // **** .MEDIA **** //
 }
-
-// DARK //
-    .dark-mode {
-        .page-detail {
-            &__title,
-            &__date {
-                color: $white;
-            }
-        }
-    }
-// .DARK //
 </style>

@@ -76,13 +76,14 @@ export default {
         async getPost() {
             try {
                 const response = await APINews.getPost(this.slug);
-                const {title, categories, _embedded, content} = response[0];
+                const {title, categories, _embedded, content, date} = response[0];
                 const imageObj = _embedded["wp:featuredmedia"][0];
                 const tagsObj = _embedded["wp:term"][1];
                 
                 this.title = title.rendered;
                 this.body = content.rendered;
                 this.image = imageObj.media_details.sizes["detail-thumbnail"].source_url || imageObj.source_url;
+                this.date = date;
 
                 this.getCategoryById(categories[0]);
                 
@@ -159,10 +160,10 @@ export default {
             color: $dark;
             font-size: 28px;
         }
-
+        
         p {
             font-size: 16px;
-            line-height: 2;
+            line-height: 1.8;
 
             a {
                 color: $fucsia;
@@ -170,6 +171,25 @@ export default {
 
                 &:hover {
                     text-decoration: none;
+                }
+            }
+        }
+
+        div {
+            > p {
+                &:first-of-type::first-letter{
+                    color: $fucsia;
+                    float: left;
+                    font-size: 60px;
+                    line-height: 40px;
+                    margin: 10px 10px 0 0;
+                    font-weight: 700;
+                    border: 2px solid $dark;
+                    padding: 10px;
+
+                    .dark-mode & {
+                        border-color: $white;
+                    }
                 }
             }
         }
@@ -237,6 +257,14 @@ export default {
 
         &:hover {
             background-color: rgba($fucsia, 0.1);
+        }
+
+        .dark-mode & {
+            background-color: rgba($fucsia, 0.2);
+
+            &:hover {
+                background-color: rgba($fucsia, 0.3);
+            }
         }
     }
 
@@ -343,15 +371,4 @@ export default {
     }
     // **** .MEDIA **** //
 }
-
-// DARK //
-    .dark-mode {
-        .post-detail {
-            &__title,
-            &__date {
-                color: $white;
-            }
-        }
-    }
-// .DARK //
 </style>
