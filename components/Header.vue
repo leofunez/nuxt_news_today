@@ -4,7 +4,7 @@
         
         <Menu :items="menu" :isDark="isDark" :isHeader="true" :isOpen="menuState" />
 
-        <button class="dark-mode__trigger"></button>
+        <button class="dark-mode__trigger" :class="{'dark-mode__trigger--is-light' : isDark}"></button>
 
         <nuxt-link class="button-live" title="Live NOW" to="/">
             Live <span class="button-live__now">now</span>

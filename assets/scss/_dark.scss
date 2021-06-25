@@ -7,6 +7,10 @@
     width: 35px;
     background: url("../assets/images/dark_mode_off.svg") no-repeat center / 22px;
 
+    &--is-light {
+        background-image: url("../assets/images/dark_mode_off.svg");
+    }
+
     &--is-on {
         background-image: url("../assets/images/dark_mode_on.svg");
     }
@@ -29,7 +33,7 @@
     }
 
     .dark-mode__trigger {
-        background-image: url("../assets/images/dark_mode_on.svg");
+        // background-image: url("../assets/images/dark_mode_on.svg");
     }
 
     .menu-button {

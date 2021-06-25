@@ -1,10 +1,10 @@
 <template>
 	<main class="main" :class="{'main--is-loading':GET_IS_LOADING}">
 		<Loader v-if="GET_IS_LOADING" />
-		<div class="bg-layer" v-if="!headerIsDark"></div>
+		<div class="bg-layer" v-if="showBgLayer"></div>
 
 		<div class="main__wrapper">
-			<Header :isDark="headerIsDark" />
+			<Header :isDark="!showBgLayer" />
 			
 			<div class="main__content">
 				<Nuxt :key="$route.fullPath" />
@@ -30,13 +30,30 @@ export default {
 
 	data() {
 		return {
-			headerIsDark: this.$route.name === "index" ? false : true
+			showBgLayer: true,
+			pagesToShowBgLayer: ["index", "category-slug"]
+		}
+	},
+
+	created() {
+		this.setShowBgLayer()
+	},
+
+	methods: {
+		setShowBgLayer() {
+			this.showBgLayer = this.pagesToShowBgLayer.indexOf(this.$route.name) !== -1 ? true : false;
 		}
 	},
 
 	computed: {
         ...mapGetters(["GET_IS_LOADING"]),
-    }
+    },
+
+	watch: {
+		$route () {
+			this.setShowBgLayer()
+		}
+	},
 }
 </script>
 

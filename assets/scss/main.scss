@@ -108,25 +108,27 @@ body {
         }
     }
 
-    .main {
-        &__content {
-            min-height: calc(100vh - 320px);
-            margin-bottom: 120px;
-        }
+    // Main
+        .main {
+            &__content {
+                min-height: calc(100vh - 320px);
+                margin-bottom: 120px;
+            }
 
-        &__wrapper {
-            max-width: 1280px;
-            margin: 0 auto;
-            z-index: 1;
-            position: relative;
-            padding: 0 15px;
-        }
+            &__wrapper {
+                max-width: 1280px;
+                margin: 0 auto;
+                z-index: 1;
+                position: relative;
+                padding: 0 15px;
+            }
 
-        &--is-loading {
-            overflow: hidden;
-            max-height: 100vh;
+            &--is-loading {
+                overflow: hidden;
+                max-height: 100vh;
+            }
         }
-    }
+    // .Main
 
     .section-title {
         text-transform: uppercase;
@@ -215,30 +217,6 @@ body {
             }
         }
     // .Video embed
-
-    // Has no dark layer
-        &:not(.has-dark-layer) {
-            .dark-mode__trigger {
-                &:not(.dark-mode__trigger--is-on) {
-                    background-image: url("../assets/images/dark_mode_off_dark.svg");
-                }
-            }
-
-            .menu-header-container {
-                .menu {
-                    &-item {
-                        a {
-                            color: $dark;
-
-                            &:hover {
-                                color: $fucsia;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    // .Has no dark layer
 
     // Gutenberg Blocks
         .wp-block {
