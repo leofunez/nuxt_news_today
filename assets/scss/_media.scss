@@ -10,29 +10,9 @@
         .logo {
             width: 100px;
             height: 40px;
-            background: url("../assets/images/logo.svg") no-repeat 0 center / 100px;
-
-            svg {
-                display: none;
-            }
-        }
-
-        &.dark-mode {
-            .logo {
-                background-image: none;
-
-                svg {
-                    display: block;
-                }
-            }
+            background-size: 90px;
         }
     // .Logo
-
-    // Dark Mode Trigger
-        .dark-mode__trigger {
-            background-image: url("../assets/images/dark_mode_off_dark.svg");
-        }
-    // .Dark Mode Trigger
     
     .main {
         &__content {

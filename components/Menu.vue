@@ -51,6 +51,10 @@ export default {
             color: $dark;
         }
 
+        .dark-mode & {
+            color: $white;
+        }
+
         &:hover {
             color: $fucsia;
         }
@@ -71,6 +75,19 @@ export default {
 
     // **** MEDIA **** //
     @media screen and (max-width: 1000px) {
+        .dark-mode & {
+            background-color: $darkest;
+            box-shadow: 0 0 24px $darkest;
+
+            .menu__item {
+                color: $white;
+
+                &:hover {
+                    color: $fucsia;
+                }
+            }
+        }
+        
         &--header {
             position: fixed;
             right: -200px;
@@ -119,18 +136,5 @@ export default {
     }
     // **** .MEDIA **** //
 }
-
-// DARK //
-    .dark-mode {
-        .menu {
-            background-color: $darkest;
-            box-shadow: 0 0 24px $darkest;
-
-             &__item {
-                 color: $white;
-             }
-        }
-    }
-// .DARK //
 
 </style>

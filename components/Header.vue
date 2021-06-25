@@ -1,10 +1,10 @@
 <template>
     <header class="header" :class="{'header--is-dark' : isDark}">
-        <nuxt-link :to="'/'" class="logo" :class="{'logo--is-dark' : isDark}"></nuxt-link>
+        <nuxt-link :to="'/'" class="logo" :class="{'logo--is-dark' : isDark && !GET_DARK_MODE}"></nuxt-link>
         
         <Menu :items="menu" :isDark="isDark" :isHeader="true" :isOpen="menuState" />
 
-        <button class="dark-mode__trigger" :class="{'dark-mode__trigger--is-light' : isDark}"></button>
+        <DarkModeTrigger :isLight="isDark" />
 
         <nuxt-link class="button-live" title="Live NOW" to="/">
             Live <span class="button-live__now">now</span>
@@ -19,12 +19,15 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
 import APINews from "~/api/api";
 import Menu from "@/components/Menu";
+import DarkModeTrigger from "@/components/DarkModeTrigger";
 
 export default {
     components: {
-        Menu
+        Menu,
+        DarkModeTrigger
     },
 
     props: {
@@ -55,7 +58,11 @@ export default {
         openMenu() {
             this.menuState = !this.menuState;
         }
-	}
+	},
+
+    computed: {
+        ...mapGetters(["GET_DARK_MODE"])
+    }
 }
 </script>
 
@@ -86,7 +93,7 @@ export default {
         grid-template-columns: 1fr 35px 94px 60px;
         border-bottom: 2px solid $light;
         
-        &.dark-mode {
+        .dark-mode & {
             background-color: $darkest;
             border-color: $darker;
         }
