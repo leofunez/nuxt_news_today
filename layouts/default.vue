@@ -1,5 +1,5 @@
 <template>
-	<main class="main">
+	<main class="main" :class="{'main--is-loading':GET_IS_LOADING}">
 		<Loader v-if="GET_IS_LOADING" />
 		<div class="bg-layer" v-if="!headerIsDark"></div>
 
@@ -32,11 +32,6 @@ export default {
 		return {
 			headerIsDark: this.$route.name === "index" ? false : true
 		}
-	},
-
-	mounted() {
-		const bodyClassList = document.querySelector("body").classList;
-		this.GET_IS_LOADING && !bodyClassList.contains("is-loading") ? bodyClassList.add("is-loading") : bodyClassList.remove("is-loading");
 	},
 
 	computed: {

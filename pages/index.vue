@@ -32,7 +32,7 @@
 		<!-- .List Large -->
 
 		<!-- Trending -->
-			<section class="most-read">
+			<section class="most-read" v-if="trendingPosts.length > 0">
     			<h2 class="section-title" v-text="'Trending'"></h2>
     
     			<div class="most-read__posts">
@@ -64,7 +64,7 @@
 		<!-- .List Medium -->
 		
 		<!-- More Top Stories -->
-			<section>
+			<section v-if="listPosts3.length > 0">
 				<h2 class="section-title" v-text="'More top stories'"></h2>
 				<div class="list-block list-block--small">
 					<PostCard
@@ -120,7 +120,7 @@ export default {
 				const response = await APINews.getHomePosts();
 
 				response.forEach(async (post, index) => {
-					const category = await APINews.getCategoryById(post.categories[0]);
+					const category = post._embedded["wp:term"][0][0];
 					const imageObj = post._embedded["wp:featuredmedia"][0];
 					const newPost = {
 						id: post.id,
@@ -148,14 +148,12 @@ export default {
 				const response = await APINews.getTendingPosts();
 
 				response.forEach(async post => {
-					const category = await APINews.getCategoryById(post.categories[0]);
+					const category = post._embedded["wp:term"][0][0];
 					const imageObj = post._embedded["wp:featuredmedia"][0];
 					const newPost = {
 						id: post.id,
 						link: `/${category.slug}/${post.slug}`,
 						title: post.title.rendered,
-						category: category.name,
-						category_slug: category.slug,
 						thumbnail: imageObj.media_details.sizes["small-thumbnail"].source_url || imageObj.source_url
 					};
 					
@@ -176,6 +174,7 @@ export default {
 			grid-gap: 2px;
 			grid-template-columns: 1fr 260px 260px;
 			margin-bottom: 60px;
+			min-height: 450px;
 
 			@media screen and (max-width: 1000px) {
 				grid-template-columns: 1fr 1fr;

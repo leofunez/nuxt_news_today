@@ -24,10 +24,6 @@ body {
     background: $white;
     position: relative;
 
-    &.is-loading {
-        overflow: hidden;
-    }
-
     .bg-layer {
         position: absolute;
         width: 100%;
@@ -124,6 +120,11 @@ body {
             z-index: 1;
             position: relative;
             padding: 0 15px;
+        }
+
+        &--is-loading {
+            overflow: hidden;
+            max-height: 100vh;
         }
     }
 

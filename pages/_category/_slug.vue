@@ -76,8 +76,9 @@ export default {
         async getPost() {
             try {
                 const response = await APINews.getPost(this.slug);
-                const {title, categories, _embedded: featured_image, content, tags} = response[0];
-                const imageObj = featured_image["wp:featuredmedia"][0];
+                const {title, categories, _embedded, content} = response[0];
+                const imageObj = _embedded["wp:featuredmedia"][0];
+                const tagsObj = _embedded["wp:term"][1];
                 
                 this.title = title.rendered;
                 this.body = content.rendered;
@@ -85,12 +86,11 @@ export default {
 
                 this.getCategoryById(categories[0]);
                 
-                tags.forEach(async tag_id => {
-                    const response = await APINews.getTagInfoById(tag_id);
+                tagsObj.forEach(async tag => {
                     this.tags = [...this.tags, {
-                        id: response.id,
-                        name: response.name,
-                        slug: `/tag/${response.slug}`
+                        id: tag.id,
+                        name: tag.name,
+                        slug: `/tag/${tag.slug}`
                     }];
                 });
 
