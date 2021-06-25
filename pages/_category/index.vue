@@ -14,6 +14,7 @@
                 :link="post.link"
                 :category="post.category"
                 :category_slug="post.category_slug"
+                :video_field="post.video_field"
                 type="medium"
             />
         </div>
@@ -72,13 +73,15 @@ export default {
                 
                 response.forEach(post => {
                     const imageObj = post._embedded["wp:featuredmedia"][0];
+                    const videoField = post?.ACF?.video_url;
                     const newPost = {
                         id: post.id,
                         link: `/${this.category}/${post.slug}`,
                         title: post.title.rendered,
                         category: this.name,
                         category_slug: this.category,
-                        thumbnail: imageObj.media_details.sizes["medium-thumbnail"].source_url || imageObj.source_url
+                        thumbnail: imageObj.media_details.sizes["medium-thumbnail"].source_url || imageObj.source_url,
+                        video_field: videoField
                     };
                     
                     this.posts = [...this.posts, newPost];

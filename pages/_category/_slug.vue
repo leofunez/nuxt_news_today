@@ -18,8 +18,9 @@
                     </div>
                 </div>
 
-                <figure class="post-detail__image" :style="{background: 'url('+ image +') no-repeat center / cover'}">
+                <figure class="post-detail__image">
                     <div class="post-detail__video-play video-embed" :data-video="video_field" v-if="video_field"></div>
+                    <img :src="image" :alt="title">
                 </figure>
 
                 <div class="post-detail__body">
@@ -76,7 +77,7 @@ export default {
         async getPost() {
             try {
                 const response = await APINews.getPost(this.slug);
-                const {title, categories, _embedded, content, date} = response[0];
+                const {title, categories, _embedded, content, date, ACF} = response[0];
                 const imageObj = _embedded["wp:featuredmedia"][0];
                 const tagsObj = _embedded["wp:term"][1];
                 
@@ -84,6 +85,7 @@ export default {
                 this.body = content.rendered;
                 this.image = imageObj.media_details.sizes["detail-thumbnail"].source_url || imageObj.source_url;
                 this.date = date;
+                this.video_field = ACF?.video_url;
 
                 this.getCategoryById(categories[0]);
                 
@@ -211,28 +213,25 @@ export default {
     &__image {
         margin: 0 0 40px;
         position: relative;
-        padding-bottom: 50%;
         @include flex-center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         
-        &-img {
+        img {
             width: 100%;
             height: auto;
         }
     }
     
     &__video-play {
-        background-color: $fucsia;
+        background: url("../../assets/images/play_white.svg") no-repeat center / 26px $fucsia;
         height: 80px;
         width: 80px;
         @include flex-center;
         position: absolute;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
-
-        svg {
-            width: 46px;
-            height: 46px;
-        }
 
         &:hover {
             background-color: $fucsia_h;

@@ -14,6 +14,7 @@
                 :link="post.link"
                 :category="post.tag"
                 :category_slug="post.tag_slug"
+                :video_field="post.video_field"
                 type="medium"
             />
         </div>
@@ -71,13 +72,15 @@ export default {
                 const response = await APINews.getTagPosts(id);
                 response.forEach(post => {
                     const imageObj = post._embedded["wp:featuredmedia"][0];
+                    const videoField = post?.ACF?.video_url;
                     const newPost = {
                         id: post.id,
                         link: `/${this.tag}/${post.slug}`,
                         title: post.title.rendered,
                         tag: this.name,
                         tag_slug: this.tag,
-                        thumbnail: imageObj.media_details.sizes["medium-thumbnail"].source_url || imageObj.source_url
+                        thumbnail: imageObj.media_details.sizes["medium-thumbnail"].source_url || imageObj.source_url,
+                        video_field: videoField
                     };
                     
                     this.posts = [...this.posts, newPost];

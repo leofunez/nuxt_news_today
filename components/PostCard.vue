@@ -1,6 +1,7 @@
 <template>
     <article class="post-card" :class="type && `post-card--${type}`">
         <nuxt-link :to="link" class="post-card__thumbnail">
+            <div class="post-card__play-button" v-if="video_field"></div>
             <figure class="post-card__thumbnail-bg" :style="{background: 'url('+ thumbnail +') no-repeat center / cover'}"></figure>
         </nuxt-link>
 
@@ -35,6 +36,9 @@ export default {
             type: String
         },
         category_slug: {
+            type: String
+        },
+        video_field: {
             type: String
         }
     }

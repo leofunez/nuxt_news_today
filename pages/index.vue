@@ -11,6 +11,7 @@
 					:link="post.link"
 					:category="post.category"
 					:category_slug="post.category_slug"
+					:video_field="post.video_field"
 					:type="index === 0 ? 'featured post-card--featured-main' : 'featured post-card--featured-list'"
 				/>
 			</section>
@@ -26,6 +27,7 @@
 					:link="post.link"
 					:category="post.category"
 					:category_slug="post.category_slug"
+					:video_field="post.video_field"
 					type="medium"
 				/>
 			</section>
@@ -58,6 +60,7 @@
 					:link="post.link"
 					:category="post.category"
 					:category_slug="post.category_slug"
+					:video_field="post.video_field"
 					type="medium"
 				/>
 			</section>
@@ -75,6 +78,7 @@
 						:link="post.link"
 						:category="post.category"
 						:category_slug="post.category_slug"
+						:video_field="post.video_field"
 						type="small"
 					/>
 				</div>
@@ -122,12 +126,14 @@ export default {
 				response.forEach(async (post, index) => {
 					const category = post._embedded["wp:term"][0][0];
 					const imageObj = post._embedded["wp:featuredmedia"][0];
+					const videoField = post?.ACF?.video_url;
 					const newPost = {
 						id: post.id,
 						link: `/${category.slug}/${post.slug}`,
 						title: post.title.rendered,
 						category: category.name,
 						category_slug: category.slug,
+						video_field: videoField,
 						thumbnail: (index < 10) ? imageObj.media_details.sizes["featured-thumbnail"].source_url : imageObj.media_details.sizes["medium-thumbnail"].source_url || imageObj.source_url
 					};
 					
