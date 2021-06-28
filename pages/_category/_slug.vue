@@ -8,7 +8,7 @@
                     
                     <h1 class="post-detail__title" v-text="title"></h1>
 
-                    <time class="post-detail__date" v-text="date"></time>
+                    <time class="post-detail__date" v-text="date" v-if="date"></time>
 
                     <div class="social-sharing">
                         <a href="" class="social-sharing__facebook" target="_blank" title="Facebook"></a>
@@ -18,13 +18,13 @@
                     </div>
                 </div>
 
-                <figure class="post-detail__image">
+                <figure class="post-detail__image" v-if="image">
                     <div class="post-detail__video-play video-embed" :data-video="video_field" v-if="video_field"></div>
                     <img :src="image" :alt="title">
                 </figure>
 
                 <div class="post-detail__body">
-                    <div v-html="body"></div>
+                    <div v-html="body" v-if="body"></div>
                     
                     <div class="post-detail__tags" v-if="tags">
                         <nuxt-link class="post-detail__tag-item" v-for="(tag, index) in tags" :to="`${tag.slug}`" :key="`${tag.slug}-${index}`" v-text="tag.name"></nuxt-link>
@@ -221,6 +221,20 @@ export default {
         img {
             width: 100%;
             height: auto;
+            z-index: 1;
+        }
+
+        &:after {
+            content: "";
+            box-shadow: 0 0 10px rgba($darkest, 0.4), 0 20px 20px rgba($darkest, 0.7);
+            bottom: 8px;
+            width: 80%;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
         }
     }
     
@@ -230,6 +244,7 @@ export default {
         width: 80px;
         @include flex-center;
         position: absolute;
+        z-index: 2;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
 
@@ -330,11 +345,7 @@ export default {
         &__video-play {
             width: 60px;
             height: 60px;
-
-            svg {
-                width: 30px;
-                height: 30px;
-            }
+            background-size: 16px;
         }
 
         &__title {
@@ -344,6 +355,11 @@ export default {
 
         &__image {
             margin-bottom: 20px;
+
+             &:after {
+                bottom: 17px;
+                height: 20px;
+             }
         }
 
         &__body {
@@ -361,11 +377,6 @@ export default {
         &__video-play {
             width: 50px;
             height: 50px;
-
-            svg {
-                width: 26px;
-                height: 26px;
-            }
         }
     }
     // **** .MEDIA **** //
