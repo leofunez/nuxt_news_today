@@ -35,7 +35,7 @@
 
 		<!-- Trending -->
 			<section class="most-read" v-if="trendingPosts.length > 0">
-    			<h2 class="section-title" v-text="'Trending'"></h2>
+    			<SectionTitle text="Trending" />
     
     			<div class="most-read__posts">
 					<PostCount
@@ -68,7 +68,7 @@
 		
 		<!-- More Top Stories -->
 			<section v-if="listPosts3.length > 0">
-				<h2 class="section-title" v-text="'More top stories'"></h2>
+				<SectionTitle text="More top stories" />
 				<div class="list-block list-block--small">
 					<PostCard
 						v-for="(post, index) in listPosts3"
@@ -93,11 +93,13 @@ import { mapActions } from "vuex";
 import APINews from "@/api/api";
 import PostCard from "@/components/PostCard";
 import PostCount from "@/components/PostCount";
+import SectionTitle from "@/components/SectionTitle";
 
 export default {
 	components: {
         PostCard,
-		PostCount
+		PostCount,
+		SectionTitle
     },
 
 	data() {
