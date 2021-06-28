@@ -1,6 +1,6 @@
 <template>
-    <section class="error-page" :class="'error-page__'+errorCode">
-        <h1 class="error-page__title" v-text="'Error '+errorCode"></h1>
+    <section class="error-page" :class="`error-page__${errorCode}`">
+        <h1 class="error-page__title" v-text="`Error ${errorCode}`"></h1>
         
         <div class="error-page__image"></div>
         
