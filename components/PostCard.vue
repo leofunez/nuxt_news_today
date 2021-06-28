@@ -102,6 +102,10 @@ export default {
         left: 0;
         top: -32px;
         padding: 10px 15px 8px 15px;
+
+        .dark-mode & {
+            background-color: $darkest;
+        }
     }
 
     &__title {
@@ -123,6 +127,10 @@ export default {
 
             &:hover {
                 background-size: 100% 3px;
+            }
+
+            .dark-mode & {
+                color: $white;
             }
         }
     }
@@ -169,6 +177,10 @@ export default {
                     padding-bottom: 10px;
                     top: -34px;
                     letter-spacing: .2px;
+
+                    .dark-mode & {
+                        background-color: $darkest;
+                    }
                 }
 
                 &__title {

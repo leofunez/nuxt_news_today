@@ -125,6 +125,10 @@ export default {
             &:last-of-type {
                 top: 25px;
             }
+
+            .dark-mode & {
+                background-color: $white;
+            }
         }
 
         &--active {

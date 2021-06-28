@@ -24,6 +24,11 @@ body {
     background: $white;
     position: relative;
 
+    &.dark-mode {
+        background-color: $darkest;
+        color: $white;
+    }
+
     .bg-layer {
         position: absolute;
         width: 100%;
@@ -31,6 +36,10 @@ body {
         background-color: $dark;
         top: 0;
         left: 0;
+
+        .dark-mode & {
+            background-color: $darker;
+        }
     }
 
     .wrapper {

@@ -1,19 +1,6 @@
 @import "_colors.scss";
 
 &.dark-mode {
-    background-color: $darkest;
-    color: $white;
-
-    .bg-layer {
-        background-color: $darker;
-    }
-
-    .menu-button {
-        &__line {
-            background-color: $white;
-        }
-    }
-
     // Search Form
         .search {
             &-field {
@@ -26,48 +13,4 @@
             }
         }
     // .Search Form
-
-    // Post Card
-        .post-card {
-            &__category {
-                background-color: $darkest;
-            }
-
-            &__title {
-                a {
-                    color: $white;
-                }
-            }
-
-            // Featured
-                &--featured {
-                    .post-card {
-                        &__category {
-                            background-color: $darkest;
-                        }
-
-                        &__title {
-                            a {
-                                color: $white;
-                            }
-                        }
-                    }
-                }
-            // .Featured
-
-            // Card Number
-                &-number {
-                    &__index {
-                        color: $white;
-                    }
-
-                    &__title {
-                        a {
-                            color: $white;
-                        }
-                    }
-                }
-            // .Card Number
-        }
-    // .Post Card
 }

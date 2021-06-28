@@ -53,6 +53,10 @@ export default {
         color: $dark;
         opacity: 0.2;
         left: 0;
+
+        .dark-mode & {
+            color: $white;
+        }
     }
 
     &__category {
@@ -66,6 +70,10 @@ export default {
 
         a {
             color: $dark;
+
+            .dark-mode & {
+                color: $white;
+            }
         }
     }
 
