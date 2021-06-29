@@ -1,5 +1,5 @@
 <template>
-    <div class="loading-string" v-text="text"></div>
+    <div class="loading-string" v-html="text"></div>
 </template>
 
 <script>
@@ -17,5 +17,6 @@ export default {
     .loading-string {
         text-align: center;
         font-weight: 600;
+        margin-bottom: 20px;
     }
 </style>

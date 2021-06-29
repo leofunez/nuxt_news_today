@@ -57,31 +57,35 @@ export default {
 
     .wrapper {
         display: grid;
-        grid-template-rows: repeat(2, 1fr);
-        grid-template-columns: 100px 1fr 200px;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
         grid-gap: 20px 0;
     }
 
     &__author {
-        grid-row: 2;
-        grid-column: 2;
+        grid-column: 1;
+        grid-row: initial;
+        text-align: center;
+    }
+
+    .logo {
+        margin: 0 auto;
+    }
+
+    .menu {
         text-align: center;
     }
 
     // **** MEDIA **** //
-    @media screen and (max-width: 1000px) {
+    @media screen and (min-width: 1000px) {
         .wrapper {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto;
-        }
-
-        .logo {
-            margin: 0 auto;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: 100px 1fr 200px;
         }
 
         &__author {
-            grid-column: 1;
-            grid-row: initial;
+            grid-row: 2;
+            grid-column: 2;
         }
     }
     // **** .MEDIA **** //

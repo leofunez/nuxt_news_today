@@ -71,36 +71,44 @@ export default {
 
 .header {
     display: grid;
-    grid-template-columns: 100px 1fr 35px 65px;
     grid-gap: 10px;
-    position: relative;
-    height: 100px;
+    grid-template-columns: 1fr 35px 94px 60px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    border-bottom: 2px solid $light;
+    padding: 0 0 0 15px;
+    z-index: 2;
+
     align-items: center;
     justify-content: space-between;
     font-size: 12px;
     font-weight: 600;
     color: $white;
 
-    @media screen and (max-width: 1000px) {
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
+    .dark-mode & {
+        background-color: $darkest;
+        border-color: $darker;
+    }
+
+    @media screen and (min-width: 1000px) {
+        grid-template-columns: 100px 1fr 35px 65px;
+        position: relative;
+        border-bottom: none;
+        height: 100px;
         background-color: $white;
-        padding: 0 0 0 15px;
-        height: 80px;
-        z-index: 2;
-        grid-template-columns: 1fr 35px 94px 60px;
-        border-bottom: 2px solid $light;
-        
+        padding: 0;
+
         .dark-mode & {
-            background-color: $darkest;
-            border-color: $darker;
+            background-color: transparent;
+            border-color: transparent;
         }
     }
 
     .menu-button {
-        display: none;
+        display: block;
         cursor: pointer;
         height: 40px;
         width: 40px;
@@ -149,8 +157,8 @@ export default {
             }
         }
 
-        @media screen and (max-width: 1000px) {
-            display: block;
+        @media screen and (min-width: 1000px) {
+            display: none;
         }
     }
 }
