@@ -84,7 +84,7 @@ export default {
                     this.isLoading = false;
                 } else {
                     setTimeout(() => {
-                        this.loadingText = `We couldn't find any matches for <strong>${this.search_param}</strong>.`;
+                        this.loadingText = this.search_param ? `We couldn't find any matches for <strong>${this.search_param}</strong>.` : "";
                         this.isLoading = true;
                     }, 500);
                 }
