@@ -37,10 +37,6 @@ export default {
     text-align: center;
     padding: 60px 0 0;
 
-    &__404 {
-        
-    }
-
     &__title {
         display: none;
         font-size: 0;
