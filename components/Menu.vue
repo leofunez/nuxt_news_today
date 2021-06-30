@@ -35,9 +35,63 @@ export default {
 
 .menu {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     padding: 0;
     margin: 0;
+
+    .dark-mode & {
+        &.menu {
+            &--header {
+                background-color: $darkest;
+                box-shadow: 0 0 24px $darkest;
+            }
+        }
+    }
+    
+    &--header {
+        position: fixed;
+        right: -200px;
+        top: 80px;
+        width: 200px;
+        z-index: 1;
+        background-color: $white;
+        box-shadow: 0 0 24px rgba($dark, 0.3);
+        padding: 15px 0;
+        transition: right 0.2s ease-in-out;
+        flex-direction: column;
+
+        &--active {
+            right: 0;
+        }
+
+        .menu {
+            &__item {
+                text-align: right;
+                padding: 15px 40px;
+                display: block;
+                color: $dark;
+
+                .dark-mode & {
+                    color: $white;
+                    
+                    &:hover {
+                        color: $fucsia;
+                    }
+                }
+
+                &.nuxt-link-exact-active {
+                    &:after {
+                        left: auto;
+                        right: 20px;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                    }
+                }
+            }
+        }
+    }  
 
     &__item {
         position: relative;
@@ -46,6 +100,10 @@ export default {
         font-size: 14px;
         font-weight: 700;
         transition: all 0.2s ease-in-out;
+
+        a {
+            font-size: 12px;
+        }
 
         &--dark {
             color: $dark;
@@ -74,63 +132,23 @@ export default {
     }
 
     // **** MEDIA **** //
-    @media screen and (max-width: 1000px) {
-        .dark-mode & {
-            background-color: $darkest;
-            box-shadow: 0 0 24px $darkest;
+    @media screen and (min-width: 1000px) {
+        position: relative;
+        right: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+        flex-direction: row;
+        transition: none ;
 
-            .menu__item {
-                color: $white;
-
-                &:hover {
-                    color: $fucsia;
-                }
-            }
-        }
-        
         &--header {
-            position: fixed;
-            right: -200px;
-            top: 80px;
-            width: 200px;
-            z-index: 1;
-            background-color: $white;
-            box-shadow: 0 0 24px rgba($dark, 0.3);
-            padding: 15px 0;
-            transition: all 0.2s ease-in-out;
-            flex-direction: column;
-
-            &--active {
-                right: 0;
-            }
+            flex-direction: row;
 
             .menu {
                 &__item {
-                    text-align: right;
-                    padding: 15px 40px;
-                    display: block;
-                    color: $dark;
-
-                    &.nuxt-link-exact-active {
-                        &:after {
-                            left: auto;
-                            right: 20px;
-                            top: 0;
-                            bottom: 0;
-                            margin: auto;
-                        }
-                    }
+                    padding: 10px 25px;
+                    font-size: 14px;
                 }
-            }
-        }        
-    }
-
-    @media screen and (max-width: 480px) {
-        flex-direction: column;
-
-        &-item {
-            a {
-                font-size: 12px;
             }
         }
     }
