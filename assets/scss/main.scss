@@ -106,16 +106,30 @@ body {
         }
     }
 
-    .logo {
-        width: 120px;
-        height: 50px;
-        display: block;
-        background: url("../assets/images/logo_dark.svg") no-repeat center;
+    // Logo
+        .logo {
+            width: 120px;
+            height: 50px;
+            display: block;
+            background: url("../assets/images/logo_dark.svg") no-repeat center;
 
-        &--is-dark {
-            background-image: url("../assets/images/logo.svg");
+            &--is-dark {
+                background-image: url("../assets/images/logo_dark.svg");
+            }
+
+            @media screen and (min-width: 1000px) {
+                &:not(.logo--is-dark) {
+                    background-image: url("../assets/images/logo_white.svg");
+                }
+            }
         }
-    }
+
+        &.dark-mode {
+            .logo {
+                background-image: url("../assets/images/logo_white.svg");
+            }
+        }
+    // .Logo
 
     // Main
         .main {

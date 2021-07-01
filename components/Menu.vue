@@ -1,6 +1,6 @@
 <template>
     <nav class="menu" :class="{'menu--header': isHeader, 'menu--header--active': isHeader && isOpen}">
-        <nuxt-link v-for="(item, index) in items" v-text="item.title" :key="`${index}-${item.url}`" :to="item.url" class="menu__item" :class="{'menu__item--dark' : isDark}"></nuxt-link>
+        <nuxt-link v-for="(item, index) in items" v-text="item.title" :key="`${index}-${item.url}`" :to="item.url" class="menu__item" :class="{'menu__item--is-dark' : isDark}"></nuxt-link>
     </nav>
 </template>
 
@@ -39,15 +39,6 @@ export default {
     justify-content: center;
     padding: 0;
     margin: 0;
-
-    .dark-mode & {
-        &.menu {
-            &--header {
-                background-color: $darkest;
-                box-shadow: 0 0 24px $darkest;
-            }
-        }
-    }
     
     &--header {
         position: fixed;
@@ -60,6 +51,11 @@ export default {
         padding: 15px 0;
         transition: right 0.2s ease-in-out;
         flex-direction: column;
+
+        .dark-mode & {
+            background-color: $darkest;
+            box-shadow: 0 0 24px $darkest;
+        }
 
         &--active {
             right: 0;
@@ -105,10 +101,6 @@ export default {
             font-size: 12px;
         }
 
-        &--dark {
-            color: $dark;
-        }
-
         .dark-mode & {
             color: $white;
         }
@@ -139,15 +131,33 @@ export default {
         width: 100%;
         box-shadow: none;
         flex-direction: row;
-        transition: none ;
+        transition: none;
 
         &--header {
             flex-direction: row;
+            background-color: transparent;
+
+            .dark-mode & {
+                box-shadow: none;
+                background-color: transparent;
+            }
 
             .menu {
                 &__item {
                     padding: 10px 25px;
                     font-size: 14px;
+                    
+                    &--is-dark {
+                        color: $white;
+                    }
+
+                    &.nuxt-link-exact-active {
+                        &:after {
+                            left: calc(50% - 2px);
+                            right: auto;
+                            bottom: -30px;
+                        }
+                    }
                 }
             }
         }

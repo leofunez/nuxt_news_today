@@ -1,10 +1,10 @@
 <template>
-    <header class="header" :class="{'header--is-dark' : isDark}">
-        <nuxt-link :to="'/'" class="logo" :class="{'logo--is-dark' : isDark && !GET_DARK_MODE}"></nuxt-link>
+    <header class="header" :class="{'header--is-dark':isDark}">
+        <nuxt-link :to="'/'" class="logo" :class="{'logo--is-dark': renderDarkLogo}"></nuxt-link>
         
         <Menu :items="menu" :isDark="isDark" :isHeader="true" :isOpen="menuState" />
 
-        <DarkModeTrigger :isLight="isDark" />
+        <DarkModeTrigger :isLight="renderDarkLogo" />
 
         <nuxt-link class="button-live" title="Live NOW" to="/">
             Live <span class="button-live__now">now</span>
@@ -39,7 +39,8 @@ export default {
     data() {
         return {
             menu: [],
-            menuState: false
+            menuState: false,
+            logoIsDark: false
         }
     },
 
@@ -61,7 +62,19 @@ export default {
 	},
 
     computed: {
-        ...mapGetters(["GET_DARK_MODE"])
+        ...mapGetters(["GET_DARK_MODE"]),
+
+        renderDarkLogo() {
+            let logoIsDark;
+            
+            if (this.GET_DARK_MODE) {
+                logoIsDark = false;
+            } else {
+                logoIsDark = !this.isDark;
+            }
+            
+            return logoIsDark
+        }
     }
 }
 </script>
@@ -73,6 +86,7 @@ export default {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 1fr 35px 94px 60px;
+    background-color: $white;
     position: fixed;
     left: 0;
     top: 0;
@@ -100,6 +114,10 @@ export default {
         height: 100px;
         background-color: $white;
         padding: 0;
+
+        &--is-dark {
+            background-color: $dark;
+        }
 
         .dark-mode & {
             background-color: transparent;

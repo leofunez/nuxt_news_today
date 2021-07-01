@@ -4,7 +4,7 @@
 		<div class="bg-layer" v-if="showBgLayer"></div>
 
 		<div class="main__wrapper">
-			<Header :isDark="!showBgLayer" />
+			<Header :isDark="showBgLayer" />
 			
 			<div class="main__content">
 				<Nuxt :key="$route.fullPath" />
