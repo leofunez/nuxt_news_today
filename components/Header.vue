@@ -85,7 +85,7 @@ export default {
 .header {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 1fr 35px 94px 60px;
+    grid-template-columns: 1fr 35px 68px 60px;
     background-color: $white;
     position: fixed;
     left: 0;

@@ -141,13 +141,17 @@ export default {
 
     &__title {
         @include main-font;
-        font-size: 65px;
-        color: $white;
+        font-size: 28px;
+        color: $dark;
         line-height: 1.1;
-        letter-spacing: -2.5px;
+        letter-spacing: -0.5px;
         text-transform: uppercase;
         text-align: center;
         margin: 20px 0;
+
+        .dark-mode & {
+            color: $white;
+        }
     }
 
     &__body {
@@ -164,8 +168,8 @@ export default {
         }
         
         p {
-            font-size: 16px;
-            line-height: 1.8;
+            font-size: 14px;
+            line-height: 1.6;
 
             a {
                 color: $fucsia;
@@ -206,12 +210,16 @@ export default {
     &__date {
         opacity: 0.7;
         font-weight: 600;
-        color: $white;
+        color: $dark;
         margin-bottom: 20px;
+
+        .dark-mode & {
+            color: $white;
+        }
     }
 
     &__image {
-        margin: 0 0 40px;
+        margin: 0 0 20px;
         position: relative;
         @include flex-center;
         display: flex;
@@ -227,7 +235,7 @@ export default {
         &:after {
             content: "";
             box-shadow: 0 0 10px rgba($darkest, 0.4), 0 20px 20px rgba($darkest, 0.7);
-            bottom: 8px;
+            bottom: 17px;
             width: 80%;
             height: 20px;
             border-radius: 50%;
@@ -318,24 +326,9 @@ export default {
     // .Social Sharing
     
     // **** MEDIA **** //
-    @media screen and (max-width: 1000px) {
-        margin-top: 60px;
-
-        &__title {
-            font-size: 45px;
-            letter-spacing: -0.5px;
-            color: $dark;
-            margin-bottom: 40px;
-        }
-
-        &__date {
-            color: $dark;
-        }
-    }
-
-    @media screen and (max-width: 768px) {
+     @media screen and (min-width: 480px) {
         &__top {
-            margin: 20px 0;
+            margin: 40px auto;
         }
 
         &__category {
@@ -350,33 +343,52 @@ export default {
 
         &__title {
             font-size: 35px;
+            letter-spacing: -1.5px;
             margin: 10px 0;
         }
 
         &__image {
-            margin-bottom: 20px;
-
-             &:after {
-                bottom: 17px;
-                height: 20px;
-             }
-        }
-
-        &__body {
-            p {
-                font-size: 14px;
-            }
+            margin-bottom: 40px;
         }
     }
 
-    @media screen and (max-width: 480px) {
+    @media screen and (min-width: 768px) {
         &__title {
-            font-size: 28px;
+            font-size: 45px;
+            letter-spacing: -2px;
         }
 
         &__video-play {
             width: 50px;
             height: 50px;
+        }
+
+        &__image {
+            &:after {
+                bottom: 8px;
+            }
+        }
+        
+        &__body {
+            p {
+                font-size: 16px;
+                line-height: 1.8;
+            }
+        }
+    }
+
+    @media screen and (min-width: 1000px) {
+        margin-top: 60px;
+
+        &__title {
+            font-size: 65px;
+            letter-spacing: -2.5px;
+            color: $white;
+            margin-bottom: 40px;
+        }
+
+        &__date {
+            color: $white;
         }
     }
     // **** .MEDIA **** //

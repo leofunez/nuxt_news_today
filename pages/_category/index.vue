@@ -103,19 +103,19 @@ export default {
 .category-page {
     &__name {
         text-align: center;
-        font-size: 75px;
-        letter-spacing: -3.5px;
+        font-size: 45px;
+        letter-spacing: -2.5px;
         margin: 20px 0 40px;
         @include main-font;
         text-transform: capitalize;
 
-        @media screen and (max-width: 768px) {
+        @media screen and (min-width: 480px) {
             font-size: 55px;
+            letter-spacing: -3.5px;
         }
 
-        @media screen and (max-width: 480px) {
-            font-size: 45px;
-            letter-spacing: -2.5px;
+        @media screen and (min-width: 768px) {
+            font-size: 75px;
         }
     }
 }
