@@ -54,7 +54,7 @@ export default {
 @import "@/assets/scss/_mixins.scss";
 
 .page-detail {
-    margin: 80px 0;
+    margin: 40px 0;
 
     .wrapper {
         margin: 0 auto;
@@ -63,13 +63,13 @@ export default {
 
     &__title {
         @include main-font;
-        font-size: 65px;
+        font-size: 28px;
         color: $dark;
         line-height: 1.1;
-        letter-spacing: -2.5px;
+        letter-spacing: -0.5px;
         text-transform: uppercase;
         text-align: center;
-        margin: 20px 0 40px;
+        margin: 20px 0;
 
         .dark-mode & {
             color: $white;
@@ -105,17 +105,14 @@ export default {
     }
 
     // **** MEDIA **** //
-    @media screen and (max-width: 1000px) {
+    @media screen and (min-width: 480px) {
         &__title {
             font-size: 45px;
-            letter-spacing: -0.5px;
-            color: $dark;
+            letter-spacing: -1.4px;
         }
     }
 
-    @media screen and (max-width: 768px) {
-        margin-top: 40px;
-
+    @media screen and (min-width: 768px) {
         &__top {
             margin: 20px 0;
         }
@@ -132,9 +129,13 @@ export default {
         }
     }
 
-    @media screen and (max-width: 480px) {
+    @media screen and (min-width: 1000px) {
+        margin-top: 80px;
+        
         &__title {
-            font-size: 28px;
+            font-size: 65px;
+            letter-spacing: -2.5px;
+            color: $dark;
         }
     }
     // **** .MEDIA **** //

@@ -179,53 +179,54 @@ export default {
 	// Featured Posts Block
 		.featured-block {
 			display: grid;
-			grid-gap: 2px;
-			grid-template-columns: 1fr 260px 260px;
+			grid-gap: 30px;
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr;
 			margin-bottom: 60px;
 			min-height: 450px;
+			position: relative;
+			padding: 15px 0 0;
 
-			@media screen and (max-width: 1000px) {
+			@media screen and (min-width: 768px) {
 				grid-template-columns: 1fr 1fr;
 				grid-template-rows: [main-post]1fr [list-posts] max-content;
-				grid-gap: 30px;
-				position: relative;
-				padding: 15px 0 0;
 			}
 
-			@media screen and (max-width: 768px) {
-				grid-template-columns: 1fr;
-            	grid-template-rows: 1fr;
+			@media screen and (min-width: 1000px) {
+				grid-template-columns: 1fr 260px 260px;
+				grid-gap: 2px;
 			}
 		}
 	// .Featured Posts Block
 
 	// Most Read
 		.most-read {
-			margin-bottom: 140px;
+			margin-bottom: 80px;
+			
+			&__title {
+				font-size: 24px;
+			}
 
 			&__posts {
-				column-count: 3;
-				column-gap: 60px;
+				display: grid;
 
-				@media screen and (max-width: 1000px) {
+				@media screen and (min-width: 768px) {
 					column-count: 2;
+					column-gap: 60px;
+					display: block;
+				}
+
+				@media screen and (min-width: 1000px) {
+					column-count: 3;
 				}
 			}
 
-			@media screen and (max-width: 768px) {
+			@media screen and (min-width: 768px) {
 				margin-bottom: 100px;
-
-				&__posts {
-					display: grid;
-				}
 			}
 
-			@media screen and (max-width: 480px) {
-				margin-bottom: 80px;
-
-				&__title {
-					font-size: 24px;
-				}
+			@media screen and (min-width: 1000px) {
+				margin-bottom: 140px;
 			}
 		}
 	// .Most Read
@@ -233,9 +234,9 @@ export default {
 	// List Block
         .list-block {
 			display: grid;
-            grid-gap: 60px 30px;
+            grid-gap: 30px;
             grid-template-columns: repeat(auto-fill, minmax(396px, 1fr));
-            margin-bottom: 140px;
+            margin-bottom: 80px;
 
             &--medium,
             &--small {
@@ -250,13 +251,13 @@ export default {
                 margin-bottom: 60px;
             }
 
-			@media screen and (max-width: 768px) {
+			@media screen and (min-width: 768px) {
 				margin-bottom: 100px;
 			}
 
-			@media screen and (max-width: 480px) {
-				grid-gap: 30px;
-				margin-bottom: 80px;
+			@media screen and (min-width: 1000px) {
+				grid-gap: 60px 30px;
+				margin-bottom: 140px;
 			}
         }
     // .List Block
