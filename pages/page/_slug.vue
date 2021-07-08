@@ -54,7 +54,7 @@ export default {
 @import "@/assets/scss/_mixins.scss";
 
 .page-detail {
-    margin: 40px 0;
+    margin: 35px 0;
 
     .wrapper {
         margin: 0 auto;
@@ -90,8 +90,8 @@ export default {
         }
 
         p {
-            font-size: 16px;
-            line-height: 2;
+            font-size: 14px;
+            line-height: 1.6;
 
             a {
                 color: $fucsia;
@@ -107,7 +107,7 @@ export default {
     // **** MEDIA **** //
     @media screen and (min-width: 480px) {
         &__title {
-            font-size: 45px;
+            font-size: 35px;
             letter-spacing: -1.4px;
         }
     }
@@ -118,20 +118,19 @@ export default {
         }
 
         &__title {
-            font-size: 35px;
+            font-size: 45px;
             margin: 10px 0 20px;
         }
 
         &__body {
             p {
-                font-size: 14px;
+                font-size: 16px;
+                line-height: 1.8;
             }
         }
     }
 
     @media screen and (min-width: 1000px) {
-        margin-top: 80px;
-        
         &__title {
             font-size: 65px;
             letter-spacing: -2.5px;

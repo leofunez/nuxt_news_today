@@ -187,12 +187,13 @@ export default {
 			position: relative;
 			padding: 15px 0 0;
 
-			@media screen and (min-width: 768px) {
+			@media screen and (min-width: 680px) {
 				grid-template-columns: 1fr 1fr;
 				grid-template-rows: [main-post]1fr [list-posts] max-content;
 			}
 
 			@media screen and (min-width: 1000px) {
+				grid-template-rows: 1fr;
 				grid-template-columns: 1fr 260px 260px;
 				grid-gap: 2px;
 			}
@@ -210,7 +211,7 @@ export default {
 			&__posts {
 				display: grid;
 
-				@media screen and (min-width: 768px) {
+				@media screen and (min-width: 680px) {
 					column-count: 2;
 					column-gap: 60px;
 					display: block;
@@ -235,13 +236,8 @@ export default {
         .list-block {
 			display: grid;
             grid-gap: 30px;
-            grid-template-columns: repeat(auto-fill, minmax(396px, 1fr));
+			grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
             margin-bottom: 80px;
-
-            &--medium,
-            &--small {
-                grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            }
 
             &--small {
                 grid-gap: 30px;
@@ -258,6 +254,16 @@ export default {
 			@media screen and (min-width: 1000px) {
 				grid-gap: 60px 30px;
 				margin-bottom: 140px;
+				grid-template-columns: repeat(auto-fill, minmax(396px, 1fr));
+
+				&--medium,
+				&--small {
+					grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+				}
+
+				&--small {
+					grid-gap: 30px;
+				}
 			}
         }
     // .List Block

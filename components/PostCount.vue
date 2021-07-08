@@ -45,7 +45,7 @@ export default {
     }
 
     &__index {
-        font-size: 50px;
+        font-size: 40px;
         font-family: oswald, sans-serif;
         font-weight: 800;
         text-align: right;
@@ -65,7 +65,8 @@ export default {
 
     &__title {
         text-transform: uppercase;
-        font-size: 16px;
+        font-size: 14px;
+        font-weight: 500;
         padding: 4px 10px 0 10px;
 
         a {
@@ -81,6 +82,17 @@ export default {
         margin: 0;
         height: 80px;
         border-radius: 4px;
+    }
+
+    @media screen and (min-width: 768px) {
+        &__index {
+            font-size: 50px;
+        }
+
+        &__title {
+            font-size: 16px;
+            font-weight: 700;
+        }
     }
 }
 </style>
