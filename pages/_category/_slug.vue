@@ -74,17 +74,27 @@ export default {
     methods: {
         ...mapActions(["SET_IS_LOADING"]),
 
+        getPostDate(date) {
+            const postDate = new Date(date);
+            const dateYear = postDate.getFullYear();
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const dateMonth = monthNames[postDate.getMonth() + 1];
+            const dateDay = postDate.getDay();
+
+            return `${dateMonth} ${dateDay}, ${dateYear}`;
+        },
+
         async getPost() {
             try {
                 const response = await APINews.getPost(this.slug);
                 const {title, categories, _embedded, content, date, ACF} = response[0];
                 const imageObj = _embedded["wp:featuredmedia"][0];
                 const tagsObj = _embedded["wp:term"][1];
-                
+
                 this.title = title.rendered;
                 this.body = content.rendered;
                 this.image = imageObj.media_details.sizes["detail-thumbnail"].source_url || imageObj.source_url;
-                this.date = date;
+                this.date = this.getPostDate(date);
                 this.video_field = ACF?.video_url;
 
                 this.getCategoryById(categories[0]);
