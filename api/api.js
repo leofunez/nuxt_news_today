@@ -66,7 +66,7 @@ export default ({
 
     // Search
         async getSearchPosts(query) {
-            return await fetch(`${baseURL}posts?search=${query}&per_page=2&_embed`).then(async res => await res.json());
+            return await fetch(`${baseURL}posts?search=${query}&per_page=10&_embed`).then(async res => await res.json());
         }
     // .Search
 });
