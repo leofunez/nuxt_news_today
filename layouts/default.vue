@@ -35,6 +35,10 @@ export default {
 		}
 	},
 
+	updated() {
+		window && window.scrollTo(0, 0)
+	},
+
 	created() {
 		this.setShowBgLayer()
 	},
