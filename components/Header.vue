@@ -1,13 +1,21 @@
 <template>
-    <header class="header" :class="{'header--is-dark':isDark}">
+    <header class="header" :class="{'header--is-dark': isDark}">
         <nuxt-link :to="'/'" class="logo" :class="{'logo--is-dark': renderDarkLogo}"></nuxt-link>
         
         <Menu :items="menu" :isDark="isDark" :isHeader="true" :isOpen="menuState" />
 
         <DarkModeTrigger :isLight="renderDarkLogo" />
 
+        <div class="header__search" @keydown.esc="searchIsOpen = false" @mouseleave="searchIsOpen = false">
+            <button class="header__search-button" @click="openSearch">
+                <SearchIcon :color="`${renderDarkLogo ? '#000000' : '#ffffff'}`" size="18" />
+            </button>
+
+            <SearchForm :class="{'search__form--active': searchIsOpen}" />
+        </div>
+
         <nuxt-link class="button-live" title="Live NOW" to="/">
-            Live <span class="button-live__now">now</span>
+            Live <span class="button-live__now" v-text="'now'"></span>
         </nuxt-link>
 
         <button class="menu-button" :class="{'menu-button--active' :menuState}" @click="openMenu">
@@ -23,11 +31,15 @@ import {mapGetters} from "vuex";
 import APINews from "~/api/api";
 import Menu from "@/components/Menu";
 import DarkModeTrigger from "@/components/DarkModeTrigger";
+import SearchForm from "@/components/SearchForm";
+import SearchIcon from "@/components/icons/SearchIcon";
 
 export default {
     components: {
         Menu,
-        DarkModeTrigger
+        DarkModeTrigger,
+        SearchForm,
+        SearchIcon
     },
 
     props: {
@@ -40,13 +52,22 @@ export default {
         return {
             menu: [],
             menuState: false,
-            logoIsDark: false
+            logoIsDark: false,
+            searchIsOpen: false
         }
     },
 
     created() {
 		this.getHeaderMenu();
 	},
+
+    mounted() {
+        window.addEventListener("keypress", ({key}) => {
+            if (key) {
+                console.log(key)
+            }
+        })
+    },
 
 	methods: {
 		async getHeaderMenu() {
@@ -58,6 +79,10 @@ export default {
 
         openMenu() {
             this.menuState = !this.menuState;
+        },
+
+        openSearch() {
+            this.searchIsOpen = !this.searchIsOpen
         }
 	},
 
@@ -85,7 +110,7 @@ export default {
 .header {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 1fr 35px 68px 60px;
+    grid-template-columns: 1fr 35px 35px 68px 60px;
     background-color: $white;
     position: fixed;
     left: 0;
@@ -107,8 +132,50 @@ export default {
         border-color: $darker;
     }
 
+    &__search {
+        position: relative;
+        
+        &-button {
+            border: 0;
+            cursor: pointer;
+            height: 40px;
+            width: 40px;
+            border-radius: 6px;
+            transition: all 0.2s ease-in-out;
+            background: none;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    .search {
+        &__form{
+            position: absolute;
+            z-index: 1;
+            display: none;
+            width: calc(100vw - 36px);
+            right: -130px;
+
+            &--active {
+                display: block;
+            }
+        }
+    }
+    
+    @media screen and (min-width: 480px) {
+        .search {
+            &__form{
+                right: -10px;
+                top: -1px;
+                width: 180px;
+            }
+        }
+    }
+
     @media screen and (min-width: 1000px) {
-        grid-template-columns: 100px 1fr 35px 65px;
+        grid-template-columns: 100px 1fr 35px 35px 65px;
         position: relative;
         border-bottom: none;
         height: 100px;

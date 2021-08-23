@@ -146,7 +146,7 @@ export default {
         flex-direction: column;
         align-items: center;
         max-width: 900px;
-        margin: 40px auto 60px;
+        margin: 40px auto 20px;
     }
 
     &__title {
@@ -337,10 +337,6 @@ export default {
     
     // **** MEDIA **** //
      @media screen and (min-width: 480px) {
-        &__top {
-            margin: 40px auto;
-        }
-
         &__category {
             font-size: 14px;
         }
@@ -363,6 +359,10 @@ export default {
     }
 
     @media screen and (min-width: 768px) {
+        &__top {
+            margin-bottom: 40px;
+        }
+
         &__title {
             font-size: 45px;
             letter-spacing: -2px;

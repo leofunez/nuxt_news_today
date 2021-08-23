@@ -6,7 +6,7 @@
             <Menu :items="menu" :isDark="false" />
 
             <div class="footer__author">
-                Designed on <a href="https://www.figma.com" target="_blank">Figma</a> and built on <a href="https://wordpress.com/" target="_blank">WordPress</a> with <span>❤</span> by <a href="https://www.leonardofunez.com" title="Leonardo Funez">Leonardo Funez</a>
+                Designed on <a href="https://www.figma.com" target="_blank">Figma</a> and built on <a href="https://vuejs.org/" target="_blank">Vue.js</a> with <span>❤</span> by <a href="https://www.leonardofunez.com" title="Leonardo Funez">Leonardo Funez</a>
             </div>
         </div>
     </footer>
