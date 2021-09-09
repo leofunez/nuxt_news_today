@@ -1,5 +1,6 @@
+import {MAIN_URL} from "../constants";
 
-const baseURL = `https://dev-today-news.pantheonsite.io/wp-json/wp/v2/`;
+const baseURL = `${MAIN_URL}/wp-json/wp/v2/`;
 
 export default ({
     // Menu

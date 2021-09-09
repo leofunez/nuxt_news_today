@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import {MAIN_URL} from "@/constants";
 import {mapGetters} from "vuex";
 import APINews from "~/api/api";
 import Menu from "@/components/Menu";
@@ -62,7 +63,7 @@ export default {
 		async getHeaderMenu() {
             const response = await APINews.getHeaderMenu();
             response.forEach(item => {
-                this.menu = [...this.menu, {title: item.title, url: item.url.replace("https://dev-today-news.pantheonsite.io/category/", "/")}]
+                this.menu = [...this.menu, {title: item.title, url: item.url.replace(`${MAIN_URL}/category/`, "/")}]
             });
 		},
 

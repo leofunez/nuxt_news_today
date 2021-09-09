@@ -244,8 +244,14 @@ export default {
         
         img {
             width: 100%;
+            background-color: $white;
+            min-height: 300px;
             height: auto;
             z-index: 1;
+
+            .dark-mode & {
+                background-color: $dark;
+            }
         }
 
         &:after {

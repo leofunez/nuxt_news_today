@@ -1,0 +1,1 @@
+export const MAIN_URL = "https://dev-today-news.pantheonsite.io";
