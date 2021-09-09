@@ -1,46 +1,64 @@
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
-  head: {
-    title: 'news',
-    htmlAttrs: {
-      lang: 'en'
-    },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
-  },
+	// Global page headers: https://go.nuxtjs.dev/config-head
+	head: {
+		title: 'News Today | Nuxt Blog Concept',
+		
+		htmlAttrs: {
+			lang: 'en'
+		},
+		
+		meta: [
+			{
+				hid: 'description',
+				name: 'description',
+				content: 'Nuxt JS concept using Wordpress REST API. Designed and developed by Leonardo Funez'
+			},
+			{ charset:  'utf-8' },
+			{ name:     'viewport',       content: 'width=device-width, initial-scale=1, user-scalable=no' },
+			{ name:     'theme-color',    content: '#0138ff'},
+			{ name:     'author',         content: 'Leonardo Funez' },
+			{ property: 'og:title',       content: 'News Today | Nuxt Blog Concept' },
+			{ property: 'og:description', content: 'Nuxt JS concept using Wordpress REST API. Designed and developed by Leonardo Funez' },
+			{ property: 'og:type',        content: 'Website' },
+			{ property: 'og:url',         content: 'https://news-today-nuxt.netlify.app' },
+		],
+		link: [
+			{ rel: 'icon', type: 'image/png', href: '/favicons/32.png',  sizes: '32x32' },
+			{ rel: 'icon', type: 'image/png', href: '/favicons/57.png',  sizes: '57x57' },
+			{ rel: 'icon', type: 'image/png', href: '/favicons/76.png',  sizes: '76x76' },
+			{ rel: 'icon', type: 'image/png', href: '/favicons/120.png', sizes: '120x120' },
+			{ rel: 'icon', type: 'image/png', href: '/favicons/152.png', sizes: '152x152' },
+			{ rel: 'icon', type: 'image/png', href: '/favicons/167.png', sizes: '167x167' },
+			{ rel: 'icon', type: 'image/png', href: '/favicons/180.png', sizes: '180x180' }
+		]
+	},
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+	// Global CSS: https://go.nuxtjs.dev/config-css
+	css: [
+	],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+	plugins: [
+	],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+	// Auto import components: https://go.nuxtjs.dev/config-components
+	components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxtjs/composition-api/module',
-  ],
+	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+	buildModules: [
+		'@nuxtjs/composition-api/module',
+	],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-  ],
+	// Modules: https://go.nuxtjs.dev/config-modules
+	modules: [
+		// https://go.nuxtjs.dev/axios
+		'@nuxtjs/axios',
+	],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+	// Axios module configuration: https://go.nuxtjs.dev/config-axios
+	axios: {},
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
+	// Build Configuration: https://go.nuxtjs.dev/config-build
+	build: {
+	}
 }

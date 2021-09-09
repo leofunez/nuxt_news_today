@@ -178,18 +178,27 @@ body {
                 top: 0;
                 border: 0;
                 background-color: $darkest;
+                z-index: 2;
             }
         }
     // .Video embed
 
     // Gutenberg Blocks
         .wp-block {
+            &-embed-youtube,
+            &-gallery,
             &-image,
             &-quote {
-                margin: 30px 0;
-                position: relative;
+                margin: 20px 0;
                 width: 100%;
+                position: relative;
                 left: 0;
+
+                @media screen and (min-width: 1000px) {
+                    margin: 40px 0;
+                    width: 120%;
+                    left: -10%;
+                }
 
                 figcaption,
                 cite {
@@ -292,6 +301,61 @@ body {
                 &:after {
                     width: 4px;
                     margin-left: 2px;
+                }
+            }
+
+            &-gallery {
+                display: flex;
+                flex-wrap: wrap;
+                list-style-type: none;
+                padding: 0;
+
+                .blocks-gallery-grid {
+                    display: grid;
+                    grid-gap: 10px;
+                    padding: 0;
+                    margin: 0;
+                    grid-template-columns: repeat(auto-fit, minmax(32%, 1fr));
+                    list-style: none;
+                    
+                    .blocks-gallery-item {
+                        width: 100%;
+                        align-self: inherit;
+
+                        figure {
+                            display: flex;
+                            align-items: flex-end;
+                            justify-content: flex-start;
+                            margin: 0;
+                            height: 100%;
+
+                            img {
+                                height: 100%;
+                                flex: 1;
+                                -o-object-fit: cover;
+                                object-fit: cover;
+                            }
+                        }
+
+                        &:last-of-type {
+                            grid-column: span 3;
+                        }
+                    }
+                }
+            }
+
+            &-embed-youtube {
+                height: 0;
+                padding-bottom: 56%;
+
+                .wp-block-embed__wrapper {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                @media screen and (min-width: 1000px) {
+                    padding-bottom: 65%;
                 }
             }
         }

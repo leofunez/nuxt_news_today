@@ -6,13 +6,11 @@
 
         <DarkModeTrigger :isLight="renderDarkLogo" />
 
-        <div class="header__search" @keydown.esc="searchIsOpen = false" @mouseleave="searchIsOpen = false">
-            <button class="header__search-button" @click="openSearch">
+        <nuxt-link :to="'/search'" class="header__search">
+            <button class="header__search-button">        
                 <SearchIcon :color="`${renderDarkLogo ? '#000000' : '#ffffff'}`" size="18" />
             </button>
-
-            <SearchForm :class="{'search__form--active': searchIsOpen}" />
-        </div>
+        </nuxt-link>
 
         <nuxt-link class="button-live" title="Live NOW" to="/">
             Live <span class="button-live__now" v-text="'now'"></span>
@@ -52,22 +50,13 @@ export default {
         return {
             menu: [],
             menuState: false,
-            logoIsDark: false,
-            searchIsOpen: false
+            logoIsDark: false
         }
     },
 
     created() {
 		this.getHeaderMenu();
 	},
-
-    mounted() {
-        window.addEventListener("keypress", ({key}) => {
-            if (key) {
-                console.log(key)
-            }
-        })
-    },
 
 	methods: {
 		async getHeaderMenu() {
@@ -79,10 +68,6 @@ export default {
 
         openMenu() {
             this.menuState = !this.menuState;
-        },
-
-        openSearch() {
-            this.searchIsOpen = !this.searchIsOpen
         }
 	},
 
@@ -119,7 +104,7 @@ export default {
     height: 80px;
     border-bottom: 2px solid $light;
     padding: 0 0 0 15px;
-    z-index: 2;
+    z-index: 3;
 
     align-items: center;
     justify-content: space-between;

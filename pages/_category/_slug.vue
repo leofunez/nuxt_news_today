@@ -191,6 +191,12 @@ export default {
             }
         }
 
+        iframe {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
         div {
             > p {
                 &:first-of-type::first-letter{
@@ -257,9 +263,9 @@ export default {
     }
     
     &__video-play {
-        background: url("../../assets/images/play_white.svg") no-repeat center / 26px $fucsia;
-        height: 80px;
-        width: 80px;
+        background: url("../../assets/images/play_white.svg") no-repeat center / 16px $fucsia;
+        height: 50px;
+        width: 50px;
         @include flex-center;
         position: absolute;
         z-index: 2;
@@ -342,9 +348,8 @@ export default {
         }
 
         &__video-play {
-            width: 60px;
-            height: 60px;
-            background-size: 16px;
+            width: 50px;
+            height: 50px;
         }
 
         &__title {
@@ -369,8 +374,9 @@ export default {
         }
 
         &__video-play {
-            width: 50px;
-            height: 50px;
+            width: 80px;
+            height: 80px;
+            background-size: 26px;
         }
 
         &__image {

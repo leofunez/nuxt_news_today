@@ -1,5 +1,5 @@
 
-const baseURL = `http://localhost:8888/news/wp-json/wp/v2/`;
+const baseURL = `https://dev-today-news.pantheonsite.io/wp-json/wp/v2/`;
 
 export default ({
     // Menu
