@@ -13,6 +13,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { APP_TITLE } from "@/constants";
 import APINews from "@/api/api";
 
 export default {
@@ -22,6 +23,12 @@ export default {
             title: "",
             body: "",
             isLoading: true
+        }
+    },
+
+    head() {
+        return {
+            title: `${APP_TITLE} | ${this.title}`,
         }
     },
 

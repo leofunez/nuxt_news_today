@@ -19,7 +19,8 @@
                 </div>
 
                 <figure class="post-detail__image" v-if="image">
-                    <div class="post-detail__video-play video-embed" :data-video="video_field" v-if="video_field"></div>
+                    <iframe class="video-embed__iframe" :src="'//www.youtube.com/embed/' + getVideoEmbedId(video_field)" frameborder="0" allowfullscreen v-if="video_field && video_visible"></iframe>
+                    <div class="post-detail__video-play video-embed" :data-video="video_field" v-if="video_field" @click="playVideo"></div>
                     <img :src="image" :alt="title">
                 </figure>
 
@@ -40,6 +41,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { APP_TITLE } from "@/constants";
 import APINews from "@/api/api";
 import RelatedPosts from "@/components/RelatedPosts";
 
@@ -54,16 +56,32 @@ export default {
 
         return { }
     },
+    
     data() {
         return {
             slug: this.$route.params.slug,
             title: "",
+            description: "",
             body: "",
             date: "",
             image: "",
             category: {},
             tags: [],
-            video_field: ""
+            video_field: "",
+            video_visible: false
+        }
+    },
+
+    head() {
+        return {
+            title: `${APP_TITLE} | ${this.title}`,
+            meta: [
+                {
+                    hid: "description",
+                    name: "description",
+                    content: this.description
+                }
+            ]
         }
     },
 
@@ -124,6 +142,17 @@ export default {
             } catch(err) {
                 console.log(err)
             }
+        },
+        
+        getVideoEmbedId(video_url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+            const match = video_url.match(regExp);
+
+            return (match && match[2].length === 11) ? match[2] : null;
+        },
+
+        playVideo() {
+            this.video_visible = true;
         }
     }
 }

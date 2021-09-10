@@ -26,6 +26,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { APP_TITLE } from "@/constants";
 import APINews from "@/api/api";
 import PostCard from "@/components/PostCard";
 import LoaderString from "@/components/LoaderString";
@@ -45,6 +46,12 @@ export default {
             name: "",
             posts: [],
             isLoading: true
+        }
+    },
+
+    head() {
+        return {
+            title: `${APP_TITLE} | ${this.name}`,
         }
     },
 

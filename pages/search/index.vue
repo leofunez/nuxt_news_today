@@ -28,6 +28,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { APP_TITLE } from "@/constants";
 import APINews from "@/api/api";
 
 import SearchForm from "@/components/SearchForm";
@@ -49,6 +50,12 @@ export default {
             posts: [],
             isLoading: true,
             loadingText: "Searching posts..."
+        }
+    },
+
+    head() {
+        return {
+            title: `${APP_TITLE} | Search`,
         }
     },
 

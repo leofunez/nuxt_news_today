@@ -6,13 +6,14 @@
             <Menu :items="menu" :isDark="false" />
 
             <div class="footer__author">
-                Designed on <a href="https://www.figma.com" target="_blank">Figma</a> and built on <a href="https://vuejs.org/" target="_blank">Vue.js</a> with <span>❤</span> by <a href="https://www.leonardofunez.com" title="Leonardo Funez">Leonardo Funez</a>
+                Designed on <a href="https://www.figma.com" target="_blank">Figma</a> and built on <a href="https://nuxtjs.org/" target="_blank">Nuxt.js</a> with <span>❤</span> by <a href="https://www.leonardofunez.com" title="Leonardo Funez">Leonardo Funez</a>
             </div>
         </div>
     </footer>
 </template>
 
 <script>
+import { MAIN_URL } from "@/constants";
 import APINews from "~/api/api";
 import Menu from "@/components/Menu";
 
@@ -35,7 +36,7 @@ export default {
 		async getFooterMenu() {
             const response = await APINews.getFooterMenu();
             response.forEach(item => {
-                this.menu = [...this.menu, {title: item.title, url: item.url}]
+                this.menu = [...this.menu, {title: item.title, url: item.url.replace(`${MAIN_URL}/`, "/page/")}]
             });
 		}
 	}

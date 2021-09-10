@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import {MAIN_URL} from "@/constants";
-import {mapGetters} from "vuex";
+import { mapGetters } from "vuex";
+import { MAIN_URL } from "@/constants";
 import APINews from "~/api/api";
 import Menu from "@/components/Menu";
 import DarkModeTrigger from "@/components/DarkModeTrigger";
@@ -105,7 +105,7 @@ export default {
     height: 80px;
     border-bottom: 2px solid $light;
     padding: 0 0 0 15px;
-    z-index: 3;
+    z-index: 4;
 
     align-items: center;
     justify-content: space-between;
