@@ -19,8 +19,8 @@
                 </div>
 
                 <figure class="post-detail__image" v-if="image">
-                    <iframe class="video-embed__iframe" :src="'//www.youtube.com/embed/' + getVideoEmbedId(video_field)" frameborder="0" allowfullscreen v-if="video_field && video_visible"></iframe>
-                    <div class="post-detail__video-play video-embed" :data-video="video_field" v-if="video_field" @click="playVideo"></div>
+                    <iframe class="video-embed__iframe" :src="'//www.youtube.com/embed/' + getVideoEmbedId(video_field)" frameborder="0" allowfullscreen v-if="video_field && show_video_player"></iframe>
+                    <div class="post-detail__video-play video-embed" v-if="video_field" @click="playVideo"></div>
                     <img :src="image" :alt="title">
                 </figure>
 
@@ -68,7 +68,7 @@ export default {
             category: {},
             tags: [],
             video_field: "",
-            video_visible: false
+            show_video_player: false
         }
     },
 
@@ -152,7 +152,7 @@ export default {
         },
 
         playVideo() {
-            this.video_visible = true;
+            this.show_video_player = true;
         }
     }
 }
