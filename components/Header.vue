@@ -12,7 +12,7 @@
             </button>
         </nuxt-link>
 
-        <nuxt-link class="button-live" title="Live NOW" to="/">
+        <nuxt-link class="button-live" title="Live NOW" to="/page/live-now">
             Live <span class="button-live__now" v-text="'now'"></span>
         </nuxt-link>
 

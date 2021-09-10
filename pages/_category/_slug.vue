@@ -12,9 +12,9 @@
 
                     <div class="social-sharing">
                         <a href="" class="social-sharing__facebook" target="_blank" title="Facebook"></a>
-                        <a href="https://twitter.com/intent/tweet?url=<?php print esc_url(get_permalink()); ?>" rel="noopener" class="social-sharing__twitter" target="_blank" title="Twitter"></a>
-                        <a href="whatsapp://send?text=<?php the_title(); ?>" data-action="share/whatsapp/share" class="social-sharing__whatsapp" target="_blank" title="Whatsapp"></a>
-                        <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&summary=<?php the_excerpt(); ?>&source=News" class="social-sharing__linkedin" target="_blank" title="Linkedin"></a>
+                        <a :href="'https://twitter.com/intent/tweet?url=' + full_path" rel="noopener" class="social-sharing__twitter" target="_blank" title="Twitter"></a>
+                        <a :href="'whatsapp://send?text=' + full_path" data-action="share/whatsapp/share" class="social-sharing__whatsapp" target="_blank" title="Whatsapp"></a>
+                        <a :href="'https://www.linkedin.com/shareArticle?mini=true&url=' + full_path + '&title=' + title + '&summary=<?php the_excerpt(); ?>&source=News'" class="social-sharing__linkedin" target="_blank" title="Linkedin"></a>
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import { APP_TITLE } from "@/constants";
+import { SITE_URL, APP_TITLE } from "@/constants";
 import APINews from "@/api/api";
 import RelatedPosts from "@/components/RelatedPosts";
 
@@ -50,16 +50,10 @@ export default {
         RelatedPosts
     },
 
-    async asyncData({ $content, params }) {
-        // const article = await $content('articles', params.slug).fetch()
-        // console.log(params)
-
-        return { }
-    },
-    
     data() {
         return {
             slug: this.$route.params.slug,
+            full_path: `${SITE_URL}${this.$route.fullPath}`,
             title: "",
             description: "",
             body: "",

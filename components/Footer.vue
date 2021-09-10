@@ -71,6 +71,7 @@ export default {
 
     .logo {
         margin: 0 auto;
+        background-image: url("../assets/images/logo_white.svg");
     }
 
     .menu {

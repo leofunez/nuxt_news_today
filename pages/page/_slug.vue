@@ -109,6 +109,12 @@ export default {
                 }
             }
         }
+
+        iframe {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
     }
 
     // **** MEDIA **** //
