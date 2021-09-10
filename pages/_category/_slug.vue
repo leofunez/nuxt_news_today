@@ -274,7 +274,6 @@ export default {
         img {
             width: 100%;
             background-color: $white;
-            min-height: 300px;
             height: auto;
             z-index: 1;
 
@@ -417,6 +416,10 @@ export default {
         &__image {
             &:after {
                 bottom: 8px;
+            }
+
+            img {
+                min-height: 300px;
             }
         }
         
