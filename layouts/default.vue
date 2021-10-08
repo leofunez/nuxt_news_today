@@ -17,9 +17,9 @@
 
 <script>
 import { mapGetters } from "vuex";
-import Header from "~/components/Header";
-import Footer from "~/components/Footer";
-import Loader from "~/components/Loader";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Loader from "@/components/Loader";
 
 export default {
 	components: {
@@ -62,6 +62,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~/assets/css/normalize.css";
-@import "~/assets/scss/main.scss";
+@import "@/assets/scss/main.scss";
 </style>

@@ -35,6 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_colors.scss";
+@import "@/assets/scss/_mixins.scss";
 
 .post-count {
     display: grid;
@@ -45,8 +46,8 @@ export default {
     }
 
     &__index {
+        @include main-font;
         font-size: 40px;
-        font-family: oswald, sans-serif;
         font-weight: 800;
         text-align: right;
         line-height: 1;

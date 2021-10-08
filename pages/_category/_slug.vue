@@ -11,10 +11,18 @@
                     <time class="post-detail__date" v-text="date" v-if="date"></time>
 
                     <div class="social-sharing">
-                        <a href="" class="social-sharing__facebook" target="_blank" title="Facebook"></a>
-                        <a :href="'https://twitter.com/intent/tweet?url=' + full_path" rel="noopener" class="social-sharing__twitter" target="_blank" title="Twitter"></a>
-                        <a :href="'whatsapp://send?text=' + full_path" data-action="share/whatsapp/share" class="social-sharing__whatsapp" target="_blank" title="Whatsapp"></a>
-                        <a :href="'https://www.linkedin.com/shareArticle?mini=true&url=' + full_path + '&title=' + title + '&summary=<?php the_excerpt(); ?>&source=News'" class="social-sharing__linkedin" target="_blank" title="Linkedin"></a>
+                        <a href="" target="_blank" title="Facebook">
+                            <IconFacebook size="40" :color="colors.fucsia" :color_hover="colors.white" />
+                        </a>
+                        <a :href="`https://twitter.com/intent/tweet?url=${full_path}`" rel="noopener" target="_blank" title="Twitter">
+                            <IconTwitter size="40" :color="colors.fucsia" :color_hover="colors.white" />
+                        </a>
+                        <a :href="`whatsapp://send?text=${full_path}`" data-action="share/whatsapp/share" target="_blank" title="Whatsapp">
+                            <IconWhatsapp size="40" :color="colors.fucsia" :color_hover="colors.white" />
+                        </a>
+                        <a :href="`https://www.linkedin.com/shareArticle?mini=true&url=${full_path}&title=${title}&summary=${description}&source=News`" target="_blank" title="Linkedin">
+                            <IconLinkedin size="40" :color="colors.fucsia" :color_hover="colors.white" />
+                        </a>
                     </div>
                 </div>
 
@@ -40,14 +48,23 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import { SITE_URL, APP_TITLE } from "@/constants";
+import { mapActions, mapGetters } from "vuex";
+import { SITE_URL, APP_TITLE, COLORS } from "@/constants";
 import APINews from "@/api/api";
+
 import RelatedPosts from "@/components/RelatedPosts";
+import IconFacebook from "@/components/icons/Facebook";
+import IconTwitter from "@/components/icons/Twitter";
+import IconWhatsapp from "@/components/icons/Whatsapp";
+import IconLinkedin from "@/components/icons/Linkedin";
 
 export default {
     components: {
-        RelatedPosts
+        RelatedPosts,
+        IconFacebook,
+        IconTwitter,
+        IconWhatsapp,
+        IconLinkedin
     },
 
     data() {
@@ -62,7 +79,8 @@ export default {
             category: {},
             tags: [],
             video_field: "",
-            show_video_player: false
+            show_video_player: false,
+            colors: COLORS || {}
         }
     },
 
@@ -193,6 +211,10 @@ export default {
         playVideo() {
             this.show_video_player = true;
         }
+    },
+
+    computed: {
+        ...mapGetters(["GET_DARK_MODE"])
     }
 }
 </script>
@@ -393,23 +415,6 @@ export default {
                 background-position: center;
                 background-repeat: no-repeat;
                 transition: all .2s ease-in-out;
-
-                &:hover {
-                    filter: invert(100%) saturate(0%);
-                }
-            }
-
-            &__facebook {
-                background-image: url("../../assets/images/social/facebook.svg");
-            }
-            &__twitter {
-                background-image: url("../../assets/images/social/twitter.svg");
-            }
-            &__whatsapp {
-                background-image: url("../../assets/images/social/whatsapp.svg");
-            }
-            &__linkedin {
-                background-image: url("../../assets/images/social/linkedin.svg");
             }
         }
     // .Social Sharing

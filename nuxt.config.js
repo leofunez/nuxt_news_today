@@ -29,7 +29,8 @@ export default {
 			{ rel: 'icon', type: 'image/png', href: '/favicons/120.png', sizes: '120x120' },
 			{ rel: 'icon', type: 'image/png', href: '/favicons/152.png', sizes: '152x152' },
 			{ rel: 'icon', type: 'image/png', href: '/favicons/167.png', sizes: '167x167' },
-			{ rel: 'icon', type: 'image/png', href: '/favicons/180.png', sizes: '180x180' }
+			{ rel: 'icon', type: 'image/png', href: '/favicons/180.png', sizes: '180x180' },
+			{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@400;500;600&display=swap'}
 		]
 	},
 
@@ -39,6 +40,7 @@ export default {
 
 	// Global CSS: https://go.nuxtjs.dev/config-css
 	css: [
+		'~/assets/css/normalize.css'
 	],
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
