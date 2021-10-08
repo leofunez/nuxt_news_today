@@ -279,7 +279,8 @@ export default {
     &__description {
         color: $dark;
         text-align: center;
-        font-size: 16px;
+        font-size: 14px;
+        line-height: 1.4;
         font-weight: 600;
         margin-top: 0;
 
@@ -455,10 +456,6 @@ export default {
     
     // **** MEDIA **** //
      @media screen and (min-width: 480px) {
-        &__category {
-            font-size: 14px;
-        }
-
         &__video-play {
             width: 50px;
             height: 50px;
@@ -477,7 +474,7 @@ export default {
 
     @media screen and (min-width: 768px) {
         &__top {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         &__title {
