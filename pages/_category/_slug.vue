@@ -7,6 +7,7 @@
                     <nuxt-link class="post-detail__category" v-if="category.name && category.link" :to="category.link" v-text="category.name"></nuxt-link>
                     
                     <h1 class="post-detail__title" v-text="title"></h1>
+                    <p class="post-detail__description" v-text="description" v-if="description"></p>
 
                     <time class="post-detail__date" v-text="date" v-if="date"></time>
 
@@ -172,15 +173,27 @@ export default {
         async getPost() {
             try {
                 const response = await APINews.getPost(this.slug);
-                const {title, categories, _embedded, content, date, ACF} = response[0];
+                const {
+                    title, 
+                    categories, 
+                    _embedded, 
+                    content, 
+                    date, 
+                    ACF: {
+                        subtitle, 
+                        video_url
+                    }
+                } = response[0];
                 const imageObj = _embedded["wp:featuredmedia"][0];
                 const tagsObj = _embedded["wp:term"][1];
+                console.log( response[0])
 
                 this.title = title.rendered;
+                this.description = subtitle;
                 this.body = content.rendered;
                 this.image = imageObj.media_details.sizes["detail-thumbnail"].source_url || imageObj.source_url;
                 this.date = this.getPostDate(date);
-                this.video_field = ACF?.video_url;
+                this.video_field = video_url;
 
                 this.getCategoryById(categories[0]);
                 
@@ -258,6 +271,18 @@ export default {
         text-transform: uppercase;
         text-align: center;
         margin: 20px 0;
+
+        .dark-mode & {
+            color: $white;
+        }
+    }
+
+    &__description {
+        color: $dark;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 0;
 
         .dark-mode & {
             color: $white;
@@ -492,7 +517,12 @@ export default {
             font-size: 65px;
             letter-spacing: -2.5px;
             color: $white;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
+        }
+
+        &__description {
+            color: $white;
+            font-size: 18px;
         }
 
         &__date {
