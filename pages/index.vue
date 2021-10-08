@@ -196,6 +196,7 @@ export default {
 				grid-template-rows: 1fr;
 				grid-template-columns: 1fr 260px 260px;
 				grid-gap: 2px;
+				padding-top: 0;
 			}
 		}
 	// .Featured Posts Block
@@ -246,6 +247,12 @@ export default {
             &--section {
                 margin-bottom: 60px;
             }
+
+			@media screen and (min-width: 580px) {
+				&--medium {
+					grid-gap: 60px 30px;
+				}
+			}
 
 			@media screen and (min-width: 768px) {
 				margin-bottom: 100px;

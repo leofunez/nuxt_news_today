@@ -97,7 +97,7 @@ export default {
     &__category {
         @include main-font;
         font-weight: 500;
-        font-size: 10px;
+        font-size: 12px;
         color: $fucsia;
         position: relative;
         background-color: $white;
@@ -155,28 +155,23 @@ export default {
             }
             
             &__category {
-                padding-left: 0;
-                padding-bottom: 5px;
+                padding: 10px 15px 9px 0;
+                position: absolute;
+                top: -35px;
             }
 
             &__title {
-                font-size: 16px;
+                font-size: 18px;
                 letter-spacing: normal;
-                font-weight: 500;
+                font-weight: 400;
+                letter-spacing: -0.2px;
             }
 
             &__play-button {
                 height: 40px;
                 width: 40px;
                 background-size: 12px;
-            }
-        }
-
-        &-main {
-            .post-card {
-                &__title {
-                    font-size: 18px;
-                }
+                background-color: $fucsia;
             }
         }
     }
@@ -232,7 +227,7 @@ export default {
             font-weight: 500;
         }
 
-        &:is(.post-card--medium) {
+        &--medium {
             display: block;
             
             .post-card {
@@ -251,7 +246,8 @@ export default {
                 }
 
                 &__title {
-                    font-size: 16px;
+                    font-size: 20px;
+                    font-weight: 400;
                 }
 
                 &__category {
@@ -266,6 +262,13 @@ export default {
     }
 
     @media screen and (min-width: 680px) {
+        &__title {
+            .list-block--medium & {
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+
         &--featured {
             &-main {
                 grid-column: 1/-1;
@@ -286,6 +289,14 @@ export default {
 
             &-list {
                 grid-row: list-posts;
+
+                .post-card {
+                    &__play-button {
+                        height: 50px;
+                        width: 50px;
+                        background-size: 14px;
+                    }
+                }
             }
         }
     }
@@ -296,6 +307,9 @@ export default {
 
             .post-card {
                 &__title {
+                    font-size: 40px;
+                    font-weight: 400;
+
                     a {
                         color: $white;
                     }
@@ -326,6 +340,18 @@ export default {
                     &__thumbnail {
                         padding-bottom: 115%;
                     }
+
+                    &__title {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+
+        &--medium {
+            .post-card {
+                &__title {
+                    font-weight: 500;
                 }
             }
         }
