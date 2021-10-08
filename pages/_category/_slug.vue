@@ -186,7 +186,6 @@ export default {
                 } = response[0];
                 const imageObj = _embedded["wp:featuredmedia"][0];
                 const tagsObj = _embedded["wp:term"][1];
-                console.log( response[0])
 
                 this.title = title.rendered;
                 this.description = subtitle;
