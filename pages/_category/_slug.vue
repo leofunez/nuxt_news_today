@@ -12,16 +12,16 @@
 
                     <div class="social-sharing">
                         <a href="" target="_blank" title="Facebook">
-                            <IconFacebook size="40" :color="colors.fucsia" :color_hover="colors.white" />
+                            <IconFacebook size="40" :color="colors.fucsia" :color_hover="is_mobile ? colors.dark : colors.white" />
                         </a>
                         <a :href="`https://twitter.com/intent/tweet?url=${full_path}`" rel="noopener" target="_blank" title="Twitter">
-                            <IconTwitter size="40" :color="colors.fucsia" :color_hover="colors.white" />
+                            <IconTwitter size="40" :color="colors.fucsia" :color_hover="is_mobile ? colors.dark : colors.white" />
                         </a>
                         <a :href="`whatsapp://send?text=${full_path}`" data-action="share/whatsapp/share" target="_blank" title="Whatsapp">
-                            <IconWhatsapp size="40" :color="colors.fucsia" :color_hover="colors.white" />
+                            <IconWhatsapp size="40" :color="colors.fucsia" :color_hover="is_mobile ? colors.dark : colors.white" />
                         </a>
                         <a :href="`https://www.linkedin.com/shareArticle?mini=true&url=${full_path}&title=${title}&summary=${description}&source=News`" target="_blank" title="Linkedin">
-                            <IconLinkedin size="40" :color="colors.fucsia" :color_hover="colors.white" />
+                            <IconLinkedin size="40" :color="colors.fucsia" :color_hover="is_mobile ? colors.dark : colors.white" />
                         </a>
                     </div>
                 </div>
@@ -48,10 +48,19 @@
 </template>
 
 <script>
+// Vuex
 import { mapActions, mapGetters } from "vuex";
-import { SITE_URL, APP_TITLE, COLORS } from "@/constants";
+
+// Api
 import APINews from "@/api/api";
 
+// Constants
+import { SITE_URL, APP_TITLE, COLORS } from "@/constants";
+
+// Utils
+import isMobile from "@/utils/is-mobile";
+
+// Components
 import RelatedPosts from "@/components/RelatedPosts";
 import IconFacebook from "@/components/icons/Facebook";
 import IconTwitter from "@/components/icons/Twitter";
@@ -80,7 +89,8 @@ export default {
             tags: [],
             video_field: "",
             show_video_player: false,
-            colors: COLORS || {}
+            colors: COLORS || {},
+            is_mobile: isMobile()
         }
     },
 
