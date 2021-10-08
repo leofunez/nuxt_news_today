@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import {COLORS} from "@/constants"
+
 export default {
     props: {
         size: {
@@ -15,7 +17,7 @@ export default {
         color: {
             type: String,
             required: true,
-            default: "#000000"
+            default: COLORS.black
         }
     }
 }
