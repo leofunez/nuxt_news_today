@@ -38,6 +38,8 @@ export default {
 		fallback: '404.html'
 	},
 
+	target: 'static',
+
 	// Global CSS: https://go.nuxtjs.dev/config-css
 	css: [
 		'~/assets/css/normalize.css'
@@ -53,6 +55,7 @@ export default {
 	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
 	buildModules: [
 		'@nuxtjs/composition-api/module',
+		'@nuxtjs/proxy'
 	],
 
 	// Modules: https://go.nuxtjs.dev/config-modules
@@ -62,7 +65,19 @@ export default {
 	],
 
 	// Axios module configuration: https://go.nuxtjs.dev/config-axios
-	axios: {},
+	axios: {
+		proxy: true,
+		baseURL: '/'
+	},
+
+	// Proxy configuration: https://github.com/nuxt-community/proxy-module
+	proxy: {
+		'/wp-json': {
+			target: 'https://dev-today-news.pantheonsite.io',
+			pathRewrite: { '^/wp-json': '/wp-json' },
+			changeOrigin: true
+		}
+	},
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {
