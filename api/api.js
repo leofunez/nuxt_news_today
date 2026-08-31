@@ -1,73 +1,79 @@
-import {MAIN_URL} from "../constants";
+import axios from 'axios'
 
-const baseURL = `${MAIN_URL}/wp-json/wp/v2/`;
+const api = axios.create({
+  baseURL: '/wp-json/wp/v2/'
+})
 
-export default ({
-    // Menu
-        async getHeaderMenu() {
-            return await fetch(`${baseURL}menu-header`).then(async res => await res.json());
-        },
+export default {
+  // Menu
+  async getHeaderMenu() {
+    const res = await api.get('menu-header')
+    return res.data
+  },
 
-        async getFooterMenu() {
-            return await fetch(`${baseURL}menu-footer`).then(async res => await res.json());
-        },
-    // .Menu
+  async getFooterMenu() {
+    const res = await api.get('menu-footer')
+    return res.data
+  },
 
-    // Home
-        async getHomePosts() {
-            return await fetch(`${baseURL}posts?per_page=43&_embed`).then(async res => await res.json());
-        },
+  // Home
+  async getHomePosts() {
+    const res = await api.get('posts', { params: { per_page: 43, _embed: true } })
+    return res.data
+  },
 
-        async getTendingPosts() {
-            return await fetch(`${baseURL}posts?per_page=9&_embed`).then(async res => await res.json());
-        },
-    // .Home
+  async getTendingPosts() {
+    const res = await api.get('posts', { params: { per_page: 9, _embed: true } })
+    return res.data
+  },
 
-    // Category
-        async getCategoryInfo(slug) {
-            return await fetch(`${baseURL}categories?slug=${slug}`).then(async res => await res.json());
-        },
+  // Category
+  async getCategoryInfo(slug) {
+    const res = await api.get('categories', { params: { slug } })
+    return res.data
+  },
 
-        async getCategoryById(id) {
-            return await fetch(`${baseURL}categories/${id}`).then(async res => await res.json());
-        },
+  async getCategoryById(id) {
+    const res = await api.get(`categories/${id}`)
+    return res.data
+  },
 
-        async getCategoryPosts(id, per_page) {
-            const perPage = per_page ? `&per_page=${per_page}` : "";
-            return await fetch(`${baseURL}posts?categories=${id}${perPage}&_embed`).then(async res => await res.json());
-        },
-    // .Category
+  async getCategoryPosts(id, per_page) {
+    const res = await api.get('posts', { params: { categories: id, per_page, _embed: true } })
+    return res.data
+  },
 
-    // Tag
-        async getTagInfo(slug) {
-            return await fetch(`${baseURL}tags/?slug=${slug}`).then(async res => await res.json());
-        },
+  // Tag
+  async getTagInfo(slug) {
+    const res = await api.get('tags', { params: { slug } })
+    return res.data
+  },
 
-        async getTagInfoById(id) {
-            return await fetch(`${baseURL}tags/${id}`).then(async res => await res.json());
-        },
+  async getTagInfoById(id) {
+    const res = await api.get(`tags/${id}`)
+    return res.data
+  },
 
-        async getTagPosts(id, per_page) {
-            const perPage = per_page ? `&per_page=${per_page}` : "";
-            return await fetch(`${baseURL}posts?tag=${id}${perPage}&_embed`).then(async res => await res.json());
-        },
-    // .Tag
+  async getTagPosts(id, per_page) {
+    const res = await api.get('posts', { params: { tag: id, per_page, _embed: true } })
+    return res.data
+  },
 
-    // Post
-        async getPost(slug) {
-            return await fetch(`${baseURL}posts?slug=${slug}&_embed`).then(async res => await res.json());
-        },
-    // .Post
+  // Post
+  async getPost(slug) {
+    const res = await api.get('posts', { params: { slug, _embed: true } })
+    return res.data
+  },
 
-    // Page
-        async getPage(slug) {
-            return await fetch(`${baseURL}pages?slug=${slug}&_embed`).then(async res => await res.json());
-        },
-    // .Page
+  // Page
+  async getPage(slug) {
+    const res = await api.get('pages', { params: { slug, _embed: true } })
+    return res.data
+  },
 
-    // Search
-        async getSearchPosts(query) {
-            return await fetch(`${baseURL}posts?search=${query}&per_page=10&_embed`).then(async res => await res.json());
-        }
-    // .Search
-});
+  // Search
+  async getSearchPosts(query) {
+    const res = await api.get('posts', { params: { search: query, per_page: 10, _embed: true } })
+    return res.data
+  }
+}
