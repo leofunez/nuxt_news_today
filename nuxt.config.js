@@ -66,5 +66,17 @@ export default {
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {
+		loaders: {
+			sass: {
+				sassOptions: {
+					silenceDeprecations: ['legacy-js-api', 'import']
+				}
+			},
+			scss: {
+				sassOptions: {
+					silenceDeprecations: ['legacy-js-api', 'import']
+				}
+			}
+		}
 	}
 }
